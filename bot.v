@@ -23,7 +23,7 @@ mut:
     result getMeResp
 }
 fn (u Telegram) get_me() resultGetMe {
-    url := 'https://api.telegram.org/bot'+u.Token+'/getMe'
+    url := 'https://api.telegram.org/bot{$u.Token}/getMe'
     resp := json.decode(resultGetMe, http.get(url)) or {
 	    eprintln('Failed to decode json')
 	    return resultGetMe{}
@@ -64,7 +64,7 @@ struct resultGetUpdates {
     result []getUpdatesResp
 }
 fn (u Telegram) get_updates(offset int) resultGetUpdates {
-    url := 'https://api.telegram.org/bot'+u.Token+'/getUpdates?offset='+offset.str()
+    url := 'https://api.telegram.org/bot{$u.Token}/getUpdates?offset='+offset.str()
     resp := json.decode(resultGetUpdates, http.get(url)) or {
 	    eprintln('Failed to decode json')
 	    return resultGetUpdates{}
@@ -73,7 +73,7 @@ fn (u Telegram) get_updates(offset int) resultGetUpdates {
 }
 // sendMessage
 fn (u Telegram) send_message(chat_id int, text string)  {
-    url := 'https://api.telegram.org/bot'+u.Token+'/sendMessage?text=$text&chat_id='+chat_id.str()
+    url := 'https://api.telegram.org/bot{$u.Token}/sendMessage?text=$text&chat_id='+chat_id.str()
     http.get(url)
 }
 
