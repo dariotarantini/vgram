@@ -10,6 +10,7 @@ mut:
     first_name string
     username string
 }
+
 struct resultGetMe {
 mut:
     ok bool
