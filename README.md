@@ -1,3 +1,3 @@
 # hygram  
-hygram is a bot framework for Telegram Bot API written in V.
+hygram is a bot library for Telegram Bot API written in V.   
 Coming soon.
