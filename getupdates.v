@@ -35,8 +35,9 @@ struct resultGetUpdates {
     result []getUpdatesResp
 }
 pub fn (u Telegram) get_updates(offset int) resultGetUpdates {
-    url := 'https://api.telegram.org/bot{$u.Token}/getUpdates?offset='+offset.str()
-    resp := json.decode(resultGetUpdates, http.get(url)) or {
+    resp := json.decode(resultGetUpdates, u.raw_request('getUpdates', {
+        'offset' : offset.str()
+    })) or {
 	    eprintln('Failed to decode json')
 	    return resultGetUpdates{}
     }
