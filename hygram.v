@@ -5,7 +5,7 @@ import json
 
 
 // main struct
-struct Telegram {
+pub struct Telegram {
 pub:
     Token string
 }
