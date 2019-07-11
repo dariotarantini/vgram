@@ -15,8 +15,11 @@ pub fn (u Telegram) raw_request(
     data map[string]string
     ) string {
     mut post_data := ''
-    for key, value in data {
-        post_data += '$key=$value&'
+
+    for e in data.entries {
+        k := e.key
+        v := data[k]
+        post_data += '$e.key=$v&'
     }
     return http.post('https://api.telegram.org/bot{$u.Token}/{$method}', post_data)
 }

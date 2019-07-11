@@ -16,10 +16,10 @@ mut:
     ok bool
     result getMeResp
 }
-pub fn (u Telegram) get_me(offset int) resultGetUpdates {
-    resp := json.decode(resultGetMe, u.raw_request('getMe', {})) or {
+pub fn (u Telegram) get_me(offset int) resultGetMe {
+    resp := json.decode(resultGetMe, u.raw_request('getMe', map[string]string{})) or {
 	    eprintln('Failed to decode json')
-	    return resultGetUpdates{}
+	    return resultGetMe{}
     }
     return resp
 }

@@ -5,8 +5,8 @@ import json
 
 // sendMessage
 fn (u Telegram) send_message(chat_id int, text string) string {
-    return u.raw_request('sendMessage', {
-        'chat_id' : chat_id,
-        'text' : text
-    })
+    mut args := map[string]string{}
+    args['chat_id'] = chat_id.str()
+    args['text'] = text
+    return u.raw_request('sendMessage', args)
 }
