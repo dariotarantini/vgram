@@ -1,14 +1,12 @@
-import hygram
+import vgram
 
-bot := Telegram{
-    Token : 'BOT_TOKEN'
-}
+bot := vgram.new_bot('TOKEN')
 bot_info := bot.get_me()
 if bot_info.ok !== true {
     eprintln('Wrong token')
     return
 }else{
-    println('Auth as {$bot_info.username} :)')
+    println('Auth as @$bot_info.result.username :)')
 }
 
 

@@ -5,6 +5,7 @@ import json
 
 // getUpdates
 struct fromMessage {
+pub:
     id int
     is_bot bool
     first_name string
@@ -13,6 +14,7 @@ struct fromMessage {
     language_code string
 }
 struct chatMessage {
+pub:
     id int
     first_name string
     last_name string
@@ -20,6 +22,7 @@ struct chatMessage {
     //type string
 }
 struct RespMessage {
+pub:
     message_id int
     from fromMessage
     chat chatMessage
@@ -27,10 +30,12 @@ struct RespMessage {
     text string
 }
 struct getUpdatesResp {
+pub:
     update_id int
     message RespMessage
 }
 struct resultGetUpdates {
+pub:
 	ok bool
     result []getUpdatesResp
 }
