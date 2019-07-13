@@ -4,7 +4,7 @@ import http
 import json
 
 struct getMeResp {
-mut:
+pub mut:
     id int
     is_bot bool
     first_name string
@@ -12,7 +12,7 @@ mut:
 }
 
 struct resultGetMe {
-mut:
+pub mut:
     ok bool
     result getMeResp
 }
