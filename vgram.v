@@ -1,20 +1,21 @@
-module hygram
+module vgram
 
 import http
 import json
 
 
 // main struct
-pub struct Telegram {
+struct Telegram {
 pub:
     Token string
 }
 
-
-pub fn (u Telegram) raw_request(
-    method string, 
-    data map[string]string
-    ) string {
+pub fn new_bot(utoken string) Telegram{
+    return Telegram{
+        Token: utoken
+    }
+}
+pub fn (u Telegram) raw_request(method string, data map[string]string) string {
     mut post_data := ''
 
     for e in data.entries {
