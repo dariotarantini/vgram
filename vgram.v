@@ -25,7 +25,7 @@ pub fn (u Telegram) raw_request(method string, data map[string]string) string {
         v := data[k]
         post_data += '$e.key=$v&'
     }
-    url := 'https://api.telegram.org/bot'+$u.Token+'/$method'
+    url := 'https://api.telegram.org/bot'+u.Token+'/$method'
     if u.Debug == true {
         println('--- DEBUG ---')
         println('URL: $url')
