@@ -16,7 +16,7 @@ mut:
     ok bool
     result getMeResp
 }
-pub fn (u Telegram) get_me(offset int) resultGetMe {
+pub fn (u Telegram) get_me() resultGetMe {
     resp := json.decode(resultGetMe, u.raw_request('getMe', map[string]string{})) or {
 	    eprintln('Failed to decode json')
 	    return resultGetMe{}

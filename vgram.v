@@ -10,7 +10,7 @@ pub:
     Token string
 }
 
-pub fn new_bot(utoken string) Telegram{
+pub fn new_bot(utoken string) Telegram {
     return Telegram{
         Token: utoken
     }
