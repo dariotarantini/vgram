@@ -17,7 +17,7 @@ pub fn new_bot(utoken string, udebug bool) Telegram {
         Debug: udebug
     }
 }
-pub fn (u Telegram) raw_request(method string, data map[string]string) string {
+pub fn (u Telegram) send(method string, data map[string]string) string {
     mut post_data := ''
 
     for e in data.entries {
