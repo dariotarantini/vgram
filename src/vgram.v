@@ -20,10 +20,14 @@ pub fn new_bot(utoken string, udebug bool) Telegram {
 pub fn (u Telegram) send(method string, data map[string]string) string {
     mut post_data := ''
 
-    for e in data.entries {
-        k := e.key
-        v := data[k]
-        post_data += '$e.key=$v&'
+    //for e in data.entries {
+    //    k := e.key
+    //    v := data[k]
+    //    post_data += '$e.key=$v&'
+    //}
+
+    for key, value in data {
+        post_data += '$key=$value'
     }
     url := 'https://api.telegram.org/bot'+u.Token+'/$method'
     if u.Debug == true {
