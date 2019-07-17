@@ -27,7 +27,7 @@ pub fn (u Telegram) send(method string, data map[string]string) string {
     //}
 
     for key, value in data {
-        post_data += '$key=$value'
+        post_data += '$key=$value+'
     }
     url := 'https://api.telegram.org/bot'+u.Token+'/$method'
     if u.Debug == true {
