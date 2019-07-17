@@ -8,7 +8,7 @@ struct ResponseParameters {
 // stored raw.
 struct APIResponse {
 	ok bool                
-	result string     
+	result []Update
 	error_code int                 
 	description string              
 	parameters ResponseParameters 

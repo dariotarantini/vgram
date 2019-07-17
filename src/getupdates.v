@@ -39,12 +39,12 @@ pub:
 	ok bool
     result []getUpdatesResp
 }
-pub fn (u Telegram) get_updates(offset int) resultGetUpdates {
+pub fn (u Telegram) get_updates(offset int) APIResponse {
     mut args := map[string]string{}
     args['offset'] = offset.str()
-    resp := json.decode(resultGetUpdates, u.raw_request('getUpdates', args)) or {
+    resp := json.decode(APIResponse, u.raw_request('getUpdates', args)) or {
 	    eprintln('Failed to decode json')
-	    return resultGetUpdates{}
+	    return APIResponse{}
     }
     return resp
 }
