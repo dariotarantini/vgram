@@ -1,3 +1,4 @@
+module vgram
 // ResponseParameters are various errors that can be returned in APIResponse.
 struct ResponseParameters {
 	migrate_to_chat_id i64 // optional
