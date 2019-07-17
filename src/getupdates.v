@@ -42,7 +42,7 @@ pub:
 pub fn (u Telegram) get_updates(offset int) APIResponse {
     mut args := map[string]string{}
     args['offset'] = offset.str()
-    resp := json.decode(APIResponse, u.raw_request('getUpdates', args)) or {
+    resp := json.decode(APIResponse, u.send('getUpdates', args)) or {
 	    eprintln('Failed to decode json')
 	    return APIResponse{}
     }
