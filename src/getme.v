@@ -17,7 +17,7 @@ pub:
     result getMeResp
 }
 pub fn (u Telegram) get_me() resultGetMe {
-    resp := json.decode(resultGetMe, u.raw_request('getMe', map[string]string{})) or {
+    resp := json.decode(resultGetMe, u.send('getMe', map[string]string{})) or {
 	    eprintln('Failed to decode json')
 	    return resultGetMe{}
     }
