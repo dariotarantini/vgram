@@ -48,7 +48,7 @@ struct MessageEntity {
 	offset int    
 	length int    
 	url    string   // optional
-	user   *User   // optional
+	user   User   // optional
 }
 
 // Chat contains information about the place a message was sent.
