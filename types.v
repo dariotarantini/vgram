@@ -42,7 +42,7 @@ pub:
 	id            int    
 	first_name    string 
 	last_name     string    
-	user_name     string
+	username     string
 	language_code string
 	is_bot        bool
 }
@@ -56,7 +56,7 @@ pub:
 	id i64      
 	typ string
 	title string
-	user_name string
+	username string
 	first_name string
 	last_name string
 	all_members_are_admins bool
