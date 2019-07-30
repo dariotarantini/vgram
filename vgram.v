@@ -21,7 +21,10 @@ fn (d Bot) http_request(data string) APIResponse {
         println('POST: $data')
         println('--- END ---')
     }
-    str_resp := http.post(url, data)
+    str_resp := http.post(url, data) or { 
+        panic('failed to decode json')
+        return APIResponse{}
+    }
     result := json.decode(APIResponse, str_resp) or { 
         panic('failed to decode json')
         return APIResponse{}
