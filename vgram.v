@@ -25,7 +25,7 @@ fn (d Bot) http_request(data string) APIResponse {
         panic('failed to make http req')
         return APIResponse{}
     }
-    result := json.decode(APIResponse, str_resp) or { 
+    result := json.decode(APIResponse, str_resp.text) or { 
         panic('failed to decode json')
         return APIResponse{}
     }
