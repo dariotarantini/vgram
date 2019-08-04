@@ -7,27 +7,23 @@ struct Bot {
     token string
     debug bool
 }
-    pub fn new_bot(utoken string, udebug bool) Bot {
+
+pub fn new_bot(utoken string, udebug bool) Bot {
     return Bot{
         token: utoken
         debug: udebug
     }
 }
 
-fn (d Bot) http_request(data string) ApiResponse {
-    url := 'https://api.telegram.org/bot'+d.token+'/'
+fn (d Bot) http_request(method, data string) string {
+    url := 'https://api.telegram.org/bot'+d.token+'/'+method
     if d.debug == true {
         println('--- DEBUG ---')
         println('POST: $data')
-        println('--- END ---')
     }
-    str_resp := http.post(url, data) or { 
+    result := http.post(url, data) or { 
         panic('failed to make http req')
-        return ApiResponse{}
+        return ''
     }
-    result := json.decode(ApiResponse, str_resp.text) or { 
-        panic('failed to decode json')
-        return ApiResponse{}
-    }
-    return result
+    return result.text
 }

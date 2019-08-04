@@ -1,33 +1,27 @@
 module vgram
 
-import http
-import json
-
-struct Bot {
-    token string
-    debug bool
-}
-pub fn new_bot(utoken string, udebug bool) Bot {
-    return Bot{
-        token: utoken
-        debug: udebug
+pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
+    x := d.http_request('getUpdates', json.encode(e))
+    resp := json.decode(RespGetUpdates, x) or { 
+        panic('Failed to decode json')
+        return []Update{}
     }
+    return resp.result
 }
 
-fn (d Bot) http_request(method, data string) string {
-    url := 'https://api.telegram.org/bot'+d.token+'/'+method
-    if d.debug == true {
-        println('--- DEBUG ---')
-        println('URL: $url')
-        println('POST: $data')
+pub fn (d Bot) get_me() User {
+    resp := json.decode(RespGetMe, d.http_request('getMe', '')) or { 
+        panic('Failed to decode json')
+        return User{}
     }
-    str_resp := http.post(url, data) or { 
-        panic('failed to make http req')
-        return ''
+    return resp.result
+}
+
+pub fn (d Bot) send_message(e NewSendMessage) Message {
+    x := d.http_request('sendMessage', json.encode(e))
+    resp := json.decode(RespSendMessage, x) or { 
+        panic('Failed to decode json')
+        return Message{}
     }
-    if d.debug == true {
-        println('RESPONSE: $str_resp.text')
-        println('--- END ---')
-    }
-    return str_resp.text
+    return resp.result
 }
