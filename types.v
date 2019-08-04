@@ -2,7 +2,7 @@ module vgram
 
 
 // method's types
-struct APIResponse {
+struct ApiResponse {
 pub:
 	ok bool                
 	result string
