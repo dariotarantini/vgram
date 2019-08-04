@@ -205,6 +205,22 @@ pub:
 	//pre_checkout_query *PreCheckoutQuery   
 }
 
+struct InlineKeyboardButton {
+pub:
+	text string
+	url string
+	//login_url LoginUrl
+	callback_data string
+	switch_inline_query string
+	switch_inline_query_current_chat string
+	//callback_game CallbackGame
+	pay bool
+}
+struct InlineKeyboardMarkup {
+pub mut:
+	inline_keyboard [][]InlineKeyboardButton
+}
+
 
 
 /**
