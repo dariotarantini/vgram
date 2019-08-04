@@ -1,29 +1,33 @@
 import vgram
 
-bot := vgram.new_bot('TOKEN')
+bot := vgram.new_bot('TOKEN', false) // <- set true for see debug log
 bot_info := bot.get_me()
-if bot_info.ok !== true {
-    eprintln('Wrong token')
-    return
-}else{
-    println('Auth as @$bot_info.result.username :)')
-}
+println('Auth as @$bot_info.username :)')
 
-
-mut updates := resultGetUpdates{}
+mut updates := []vgram.Update{}
 mut last_offset := 0
-mut update = getUpdatesResp{}
 
 for {
-    updates = bot.get_updates(last_offset)
+    updates = bot.get_updates(vgram.NewGetUpdates{
+        offset: last_offset
+        limit: 100
+    })
+    for update in updates {
 
-    for update in updates.result {
         if last_offset < update.update_id {
             last_offset = update.update_id
-            println(update.message.from.id.str()+' wrote: '+update.message.text)
             if update.message.text == '/start' {
-                tg.send_message(update.message.from.id, 'Hi boy')
+                bot.send_message(vgram.NewSendMessage{
+                    chat_id: update.message.from.id.str(),
+                    text: 'Hi man'
+                })
+            }else{
+                bot.send_message(vgram.NewSendMessage{
+                    chat_id: update.message.from.id.str(),
+                    text: 'Sorry, what do you mean?'
+                })
             }
         }
+    
     }
-}	
+}
