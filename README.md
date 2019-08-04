@@ -22,19 +22,17 @@ for {
     for update in updates {
         if last_offset < update.update_id {
             last_offset = update.update_id
+            println('>>> mid: $update.message.message_id | from: $update.message.from.first_name ($update.message.from.username) | text: $update.message.text')
+            mut responsetext := 'Sorry, what do you mean?'
             if update.message.text == '/start' {
-                bot.send_message(vgram.NewSendMessage{
-                    chat_id: update.message.from.id.str(),
-                    text: 'Hi man'
-                })
-            }else{
-                bot.send_message(vgram.NewSendMessage{
-                    chat_id: update.message.from.id.str(),
-                    text: 'Sorry, what do you mean?'
-                })
+                responsetext = 'Hi man'
             }
+            bot.send_message(vgram.NewSendMessage{
+                chat_id: update.message.from.id.str(),
+                text: responsetext
+            })
+            println('<<< $update.update_id | $responsetext')
         }
-    
     }
 }
 ```
