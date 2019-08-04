@@ -41,6 +41,13 @@ pub:
 	url string
 	user User
 }
+struct PhotoSize {
+pub:
+	file_id string
+	width int
+	height int
+	file_size int
+}
 struct Audio {
 pub:
 	file_id string 
