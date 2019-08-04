@@ -1,5 +1,8 @@
 module vgram
 
+/*
+ * Getting updates methods
+*/
 pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
     x := d.http_request('getUpdates', json.encode(e))
     resp := json.decode(RespGetUpdates, x) or { 
@@ -9,6 +12,10 @@ pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
     return resp.result
 }
 
+
+/*
+ * Other methods
+*/
 pub fn (d Bot) get_me() User {
     resp := json.decode(RespGetMe, d.http_request('getMe', '')) or { 
         panic('Failed to decode json')
@@ -20,6 +27,24 @@ pub fn (d Bot) get_me() User {
 pub fn (d Bot) send_message(e NewSendMessage) Message {
     x := d.http_request('sendMessage', json.encode(e))
     resp := json.decode(RespSendMessage, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}
+
+pub fn (d Bot) forward_message(e NewForwardMessage) Message {
+    x := d.http_request('forwardMessage', json.encode(e))
+    resp := json.decode(RespForwardMessage, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}
+
+pub fn (d Bot) send_photo(e NewSendPhoto) Message {
+    x := d.http_request('sendPhoto', json.encode(e))
+    resp := json.decode(RespSendPhoto, x) or { 
         panic('Failed to decode json')
         return Message{}
     }

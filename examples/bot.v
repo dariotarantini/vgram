@@ -1,8 +1,6 @@
 import vgram
 
-bot := vgram.new_bot('TOKEN', false) // <- set true for see debug log
-bot_info := bot.get_me()
-println('Auth as @$bot_info.username :)')
+bot := vgram.new_bot('TOKEN', false) // <- set true to see debug log
 
 mut updates := []vgram.Update{}
 mut last_offset := 0

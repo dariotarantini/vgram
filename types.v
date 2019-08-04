@@ -165,3 +165,38 @@ pub:
 	description string              
 }
 
+// forwardMessage
+struct NewForwardMessage {
+pub:
+    chat_id string
+	from_chat_id string
+	disable_notification bool
+	message_id int
+}
+struct RespForwardMessage {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+
+// sendPhoto
+struct NewSendPhoto {
+pub:
+    chat_id string
+	photo string
+    caption string
+    parse_mode string
+    disable_web_page_preview bool
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendPhoto {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
