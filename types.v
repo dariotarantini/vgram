@@ -161,7 +161,7 @@ pub:
 	animation Animation
 	//game *Game
 	photo []PhotoSize
-	sticker *Sticker
+	sticker Sticker
 	video Video
 	video_note VideoNote
 	voice Voice
