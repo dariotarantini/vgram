@@ -216,9 +216,13 @@ pub:
 	//callback_game CallbackGame
 	pay bool
 }
+struct InlineKeyboardRow {
+pub mut:
+	[]InlineKeyboardButton
+}
 struct InlineKeyboardMarkup {
 pub mut:
-	inline_keyboard [][]InlineKeyboardButton
+	inline_keyboard []InlineKeyboardRow
 }
 
 
