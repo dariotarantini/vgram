@@ -217,7 +217,7 @@ pub:
 	pay bool
 }
 struct InlineKeyboardMarkup {
-pub mut:
+pub:
 	inline_keyboard [][]InlineKeyboardButton
 }
 
