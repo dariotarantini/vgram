@@ -1,29 +1,27 @@
 module vgram
 
-pub fn (d Bot) get_updates(e NewGetUpdates) Update {
-    e.method = 'getUpdates'
-    resp := d.http_request(json.encode(e))
-    result := json.decode(Update, resp.result) or { 
+pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
+    x := d.http_request('getUpdates', json.encode(e))
+    resp := json.decode(RespGetUpdates, x) or { 
         panic('Failed to decode json')
-        return Update{}
+        return []Update{}
     }
-    return result
+    return resp.result
 }
-pub fn (d Bot) get_me(e NewGetMe) User {
-    e.method = 'getMe'
-    resp := d.http_request(json.encode(e))
-    result := json.decode(User, resp.result) or { 
+
+pub fn (d Bot) get_me() User {
+    resp := json.decode(RespGetMe, d.http_request('getMe', '')) or { 
         panic('Failed to decode json')
         return User{}
     }
-    return result
+    return resp.result
 }
+
 pub fn (d Bot) send_message(e NewSendMessage) Message {
-    e.method = 'sendMessage'
-    resp := d.http_request(json.encode(e))
-    result := json.decode(Message, resp.result) or { 
+    x := d.http_request('sendMessage', json.encode(e))
+    resp := json.decode(RespSendMessage, x) or { 
         panic('Failed to decode json')
         return Message{}
     }
-    return result
+    return resp.result
 }
