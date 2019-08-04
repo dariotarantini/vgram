@@ -14,7 +14,7 @@ pub fn new_bot(token string, debug bool) Bot {
     }
 }
 
-fn (d Bot) http_request(data string) APIResponse {
+fn (d Bot) http_request(data string) ApiResponse {
     url := 'https://api.telegram.org/bot'+d.Token+'/'
     if d.Debug == true {
         println('--- DEBUG ---')
@@ -25,9 +25,9 @@ fn (d Bot) http_request(data string) APIResponse {
         panic('failed to make http req')
         return APIResponse{}
     }
-    result := json.decode(APIResponse, str_resp.text) or { 
+    result := json.decode(ApiResponse, str_resp.text) or { 
         panic('failed to decode json')
-        return APIResponse{}
+        return ApiResponse{}
     }
     return result
 }
