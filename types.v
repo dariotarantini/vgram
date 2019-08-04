@@ -22,7 +22,7 @@ pub:
 struct Chat {
 pub:
 	id i64      
-	typ string
+	@type string
 	title string
 	username string
 	first_name string
@@ -35,7 +35,7 @@ pub:
 }
 struct MessageEntity {
 pub:
-	typ string 
+	@type string 
 	offset int    
 	length int    
 	url string
@@ -50,6 +50,90 @@ pub:
 	mime_type string
 	file_size int
 }
+struct Document {
+pub:
+	file_id string 
+	thumb PhotoSize
+	file_name string
+	mime_type string
+	file_size int
+}
+struct Video {
+pub:
+	file_id string 
+	width int
+	height int
+	duration int
+	thumb PhotoSize
+	mime_type string
+	file_size int
+}
+struct Animation {
+pub:
+	file_id string 
+	width int
+	height int
+	duration int
+	thumb PhotoSize
+	mime_type string
+	file_size int
+}
+struct MaskPosition {
+pub:
+	point string
+	x_shift f32
+	y_shift f32
+	scale f32
+}
+struct Sticker {
+pub:
+	file_id string 
+	width int
+	height int
+	is_animated bool
+	thumb PhotoSize
+	emoji string
+	set_name string
+	mask_position MaskPosition
+	file_size int
+}
+struct VideoNote {
+pub:
+	file_id string 
+	lenght int
+	duration int
+	thumb PhotoSize
+	file_size int
+}
+struct Voice {
+pub:
+	file_id string 
+	duration int
+	mime_type string
+	file_size int
+}
+struct Contact {
+pub:
+	phone_number string
+	first_name string
+	last_name string
+	user_id int
+	vcard int
+}
+struct Location {
+pub:
+	longitude f32
+	latitude f32
+}
+struct Venue {
+pub:
+	location Location
+	title string
+	address string
+	foursquare_id string
+	foursquare_type string
+}
+
 struct Message {
 pub:
 	message_id int                
@@ -66,29 +150,29 @@ pub:
 	entities []MessageEntity
 	caption_entities []MessageEntity
 	audio Audio
-	//document              *Document                          // optional
-	//animation             *ChatAnimation                    // optional
-	//game                  *Game                                  // optional
-	//photo                 []PhotoSize                          // optional
-	//sticker               *Sticker                            // optional
-	//video                 *Video                                // optional
-	//videoNote             *VideoNote                       // optional
-	//voice                 *Voice                                // optional
-	caption               string                              // optional
-	//contact               *Contact                            // optional
-	//location              *Location                          // optional
-	//venue                 *Venue                                // optional
-	new_chat_members        []User                    // optional
-	left_chat_member        User                      // optional
-	new_chat_title          string                       // optional
-	//new_chat_photo          []PhotoSize                 // optional
-	delete_chat_photo       bool                      // optional
-	group_chat_created      bool                     // optional
-	super_group_chat_created bool                // optional
-	channel_chat_created    bool                   // optional
-	migrate_to_chat_id     i64                    // optional
-	migrate_from_chat_id     i64                  // optional
-	//pinned_message         *Message
+	document Document
+	animation Animation
+	//game *Game
+	photo []PhotoSize
+	sticker *Sticker
+	video Video
+	video_note VideoNote
+	voice Voice
+	caption string
+	contact Contact
+	location Location
+	//venue                 *Venue
+	new_chat_members []User
+	left_chat_member User
+	new_chat_title string
+	new_chat_photo []PhotoSize
+	delete_chat_photo bool
+	group_chat_created bool
+	super_group_chat_created bool
+	channel_chat_created bool
+	migrate_to_chat_id i64
+	migrate_from_chat_id i64
+	//pinned_message *Message
 }
 struct CallbackQuery {
 pub:
