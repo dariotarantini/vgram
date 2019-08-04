@@ -63,3 +63,11 @@ pub fn (d Bot) send_document(e NewSendDocument) Message {
     }
     return resp.result
 }
+pub fn (d Bot) send_video(e NewSendVideo) Message {
+    x := d.http_request('sendVideo', json.encode(e))
+    resp := json.decode(RespSendVideo, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}

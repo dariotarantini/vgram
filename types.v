@@ -351,3 +351,27 @@ pub:
 	error_code int                 
 	description string              
 }
+
+// sendVideo
+struct NewSendVideo {
+pub:
+    chat_id string
+	video string
+	duration int
+	width int
+	height int
+	supports_streaming bool
+    caption string
+    parse_mode string
+	thumb string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendVideo {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
