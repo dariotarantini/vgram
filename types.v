@@ -375,3 +375,132 @@ pub:
 	error_code int                 
 	description string              
 }
+// sendAnimation
+struct NewSendAnimation {
+pub:
+    chat_id string
+	animation string
+	duration int
+	width int
+	height int
+    caption string
+    parse_mode string
+	thumb string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendAnimation {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// sendVoice
+struct NewSendVoice {
+pub:
+    chat_id string
+	voice string
+	duration int
+    caption string
+    parse_mode string
+	thumb string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendVoice {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// sendVideoNote
+struct NewSendVideoNote {
+pub:
+    chat_id string
+	video_note string
+	duration int
+	length int
+    caption string
+    parse_mode string
+	thumb string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendVideoNote {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// sendMediaGroup
+struct NewSendVideoNote {
+pub:
+    chat_id string
+	media string // json of []InputMedia (not implemented)
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendVideoNote {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// sendLocation
+struct NewSendLocation {
+pub:
+    chat_id string
+	latitude f32
+	longitude f32
+	live_period int
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendLocation {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// editMessageLiveLocation
+struct NewEditMessageLiveLocation {
+pub:
+    chat_id string
+	message_id int
+	inline_message_id string
+	latitude f32
+    longitude f32
+    reply_markup string
+}
+struct RespEditMessageLiveLocation {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// stopMessageLiveLocation
+struct NewStopMessageLiveLocation {
+pub:
+    chat_id string
+	message_id int
+	inline_message_id string
+    reply_markup string
+}
+struct RespStopMessageLiveLocation {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
