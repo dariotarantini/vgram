@@ -439,7 +439,7 @@ pub:
 	description string              
 }
 // sendMediaGroup
-struct NewSendVideoNote {
+struct NewSendMediaGroup {
 pub:
     chat_id string
 	media string // json of []InputMedia (not implemented)
@@ -447,7 +447,7 @@ pub:
     reply_to_message_id int
     reply_markup string
 }
-struct RespSendVideoNote {
+struct RespSendMediaGroup {
 pub:
 	ok bool                
 	result Message
