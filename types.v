@@ -1,42 +1,10 @@
 module vgram
 
+/**
+ * JSON types
+*/
 
-// method's types
-struct ApiResponse {
-pub:
-	ok bool                
-	result string
-	error_code int                 
-	description string              
-}
 
-struct NewGetUpdates {
-pub:
-    offset int
-    limit int
-    timeout int
-    allowed_updates []string
-mut:
-    method string
-}
-struct NewGetMe {
-mut:
-    method string
-}
-struct NewSendMessage {
-pub:
-    chat_id string
-    text string
-    parse_mode string
-    disable_web_page_preview bool
-    disable_notification bool
-    reply_to_message_id int
-    reply_markup string
-mut: 
-    method string
-}
-
-// json object
 struct User {
 pub:
 	id            int    
@@ -135,7 +103,7 @@ pub:
 struct Update {
 pub:
 	update_id int                 
-	message Message            
+	message Message
 	edited_message Message            
 	channel_post Message            
 	edited_channel_post Message            
@@ -145,3 +113,55 @@ pub:
 	//shipping_query *ShippingQuery      
 	//pre_checkout_query *PreCheckoutQuery   
 }
+
+
+
+/**
+ * STRUCTS USED IN METHODS
+*/
+
+
+// getMe
+struct RespGetMe {
+pub:
+	ok bool                
+	result User
+	error_code int                 
+	description string              
+}
+
+// getUpdates
+struct NewGetUpdates {
+pub:
+    offset int
+    limit int
+    timeout int
+    allowed_updates []string
+}
+struct RespGetUpdates {
+pub:
+	ok bool                
+	result []Update
+	error_code int                 
+	description string              
+}
+
+// sendMessage
+struct NewSendMessage {
+pub:
+    chat_id string
+    text string
+    parse_mode string
+    disable_web_page_preview bool
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendMessage {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+
