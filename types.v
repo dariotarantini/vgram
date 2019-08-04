@@ -204,7 +204,11 @@ pub:
 	//shipping_query *ShippingQuery      
 	//pre_checkout_query *PreCheckoutQuery   
 }
-
+/*
+ATTENCTION!
+Dont use InlineKeyboard!
+Its actually broken
+*/
 struct InlineKeyboardButton {
 pub:
 	text string
