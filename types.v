@@ -159,7 +159,7 @@ pub:
 	audio Audio
 	document Document
 	animation Animation
-	//game *Game
+	//game Game <- not implemented
 	photo []PhotoSize
 	sticker Sticker
 	video Video
@@ -168,7 +168,7 @@ pub:
 	caption string
 	contact Contact
 	location Location
-	//venue                 *Venue
+	venue Venue
 	new_chat_members []User
 	left_chat_member User
 	new_chat_title string
@@ -285,6 +285,46 @@ pub:
     reply_markup string
 }
 struct RespSendPhoto {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// sendAudio
+struct NewSendAudio {
+pub:
+    chat_id string
+	audio string
+    caption string
+    parse_mode string
+	performer string
+	title string
+	thumb string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendAudio {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+// sendDocument
+struct NewSendDocument {
+pub:
+    chat_id string
+	document string
+    caption string
+    parse_mode string
+	thumb string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+struct RespSendDocument {
 pub:
 	ok bool                
 	result Message
