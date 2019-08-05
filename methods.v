@@ -1,8 +1,6 @@
 module vgram
 
-/*
- * Getting updates methods
-*/
+
 pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
     x := d.http_request('getUpdates', json.encode(e))
     resp := json.decode(RespUpdates, x) or { 
@@ -11,11 +9,6 @@ pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
     }
     return resp.result
 }
-
-
-/*
- * Other methods
-*/
 pub fn (d Bot) get_me() User {
     resp := json.decode(RespUser, d.http_request('getMe', '')) or { 
         panic('Failed to decode json')
