@@ -151,6 +151,14 @@ pub:
 	total_count int
 	photos [][]PhotoSize
 }
+struct InlineQuery {
+pub:
+	id string
+	from User
+	location Location
+	query string
+	offset string
+}
 struct Message {
 pub:
 	message_id int                
@@ -208,12 +216,13 @@ pub:
 	edited_message Message            
 	channel_post Message            
 	edited_channel_post Message            
-	//inline_query InlineQuery        
+	inline_query InlineQuery        
 	//chosen_inline_result ChosenInlineResult 
 	callback_query CallbackQuery      
 	//shipping_query ShippingQuery      
 	//pre_checkout_query PreCheckoutQuery   
 }
+
 /*
 ATTENCTION!
 Dont use InlineKeyboard!
@@ -235,6 +244,14 @@ pub:
 	inline_keyboard [][]InlineKeyboardButton
 }
 
+struct InlineQueryResultArticle {
+	@type string
+	id string
+	title string
+	input_message_content InputMessageContent
+	reply_markup string //InlineKeyboardMarkup json
+	description string
+}
 
 // resp 
 struct RespUser {

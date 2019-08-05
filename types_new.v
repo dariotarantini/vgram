@@ -214,3 +214,13 @@ struct NewGetFile {
 pub:
     file_id string
 }
+struct NewAnswerInlineQuery {
+pub:
+    inline_query_id string
+    results string  // json of []InlineQueryResult (not implemented)
+    cache_time int
+    is_personal int
+    next_offset string
+    switch_pm_text string
+    switch_pm_parameter string
+}

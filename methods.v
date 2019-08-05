@@ -168,3 +168,11 @@ pub fn (d Bot) get_file(e NewGetFile) File {
     }
     return resp.result
 }
+pub fn (d Bot) answer_inline_query(e NewAnswerInlineQuery) bool {
+    x := d.http_request('answerInlineQuery', json.encode(e))
+    resp := json.decode(RespBool, x) or { 
+        panic('Failed to decode json')
+        return false
+    }
+    return resp.result
+}
