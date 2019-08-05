@@ -244,7 +244,7 @@ pub:
 	inline_keyboard [][]InlineKeyboardButton
 }
 struct InputTextMessageContent {
-	message_text text
+	message_text string
 	parse_mode string
 	disable_web_page_preview bool
 }
