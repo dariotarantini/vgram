@@ -243,12 +243,16 @@ struct InlineKeyboardMarkup {
 pub:
 	inline_keyboard [][]InlineKeyboardButton
 }
-
+struct InputTextMessageContent {
+	message_text text
+	parse_mode string
+	disable_web_page_preview bool
+}
 struct InlineQueryResultArticle {
 	@type string
 	id string
 	title string
-	input_message_content InputMessageContent
+	input_message_content InputTextMessageContent
 	reply_markup string //InlineKeyboardMarkup json
 	description string
 }
