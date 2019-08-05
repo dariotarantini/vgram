@@ -41,6 +41,12 @@ pub:
 	url string
 	user User
 }
+struct File {
+pub:
+	file_id string 
+	file_size int    
+	file_path string
+}
 struct PhotoSize {
 pub:
 	file_id string
@@ -263,6 +269,13 @@ struct RespUserProfilePhotos {
 pub:
 	ok bool                
 	result UserProfilePhotos
+	error_code int                 
+	description string              
+}
+struct RespFile {
+pub:
+	ok bool                
+	result File
 	error_code int                 
 	description string              
 }

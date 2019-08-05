@@ -209,3 +209,8 @@ pub:
     offset int
     limit int
 }
+// getFile
+struct NewGetFile {
+pub:
+    file_id string
+}

@@ -167,3 +167,11 @@ pub fn (d Bot) get_user_profile_photos(e NewGetUserProfilePhotos) Message {
     }
     return resp.result
 }
+pub fn (d Bot) get_file(e NewGetFile) Message {
+    x := d.http_request('getFile', json.encode(e))
+    resp := json.decode(RespFile, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}
