@@ -127,3 +127,43 @@ pub fn (d Bot) stop_message_live_location(e NewStopMessageLiveLocation) Message 
     }
     return resp.result
 }
+pub fn (d Bot) send_venue(e NewSendVenue) Message {
+    x := d.http_request('sendVenue', json.encode(e))
+    resp := json.decode(RespMessage, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}
+pub fn (d Bot) send_contact(e NewSendContact) Message {
+    x := d.http_request('sendContact', json.encode(e))
+    resp := json.decode(RespMessage, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}
+pub fn (d Bot) send_poll(e NewSendPoll) Message {
+    x := d.http_request('sendPoll', json.encode(e))
+    resp := json.decode(RespMessage, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}
+pub fn (d Bot) send_chat_action(e NewSendChatAction) Message {
+    x := d.http_request('sendChatAction', json.encode(e))
+    resp := json.decode(RespBool, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}
+pub fn (d Bot) get_user_profile_photos(e NewGetUserProfilePhotos) Message {
+    x := d.http_request('getUserProfilePhotos', json.encode(e))
+    resp := json.decode(RespUserProfilePhotos, x) or { 
+        panic('Failed to decode json')
+        return Message{}
+    }
+    return resp.result
+}

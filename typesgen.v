@@ -140,7 +140,11 @@ pub:
 	foursquare_id string
 	foursquare_type string
 }
-
+struct UserProfilePhotos {
+pub:
+	total_count int
+	photos [][]PhotoSize
+}
 struct Message {
 pub:
 	message_id int                
@@ -234,6 +238,13 @@ pub:
 	error_code int                 
 	description string              
 }
+struct RespBool {
+pub:
+	ok bool                
+	result bool
+	error_code int                 
+	description string              
+}
 struct RespUpdates {
 pub:
 	ok bool                
@@ -245,6 +256,13 @@ struct RespMessage {
 pub:
 	ok bool                
 	result Message
+	error_code int                 
+	description string              
+}
+struct RespUserProfilePhotos {
+pub:
+	ok bool                
+	result UserProfilePhotos
 	error_code int                 
 	description string              
 }

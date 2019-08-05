@@ -160,3 +160,52 @@ pub:
 	inline_message_id string
     reply_markup string
 }
+// sendVenue
+struct NewSendVenue {
+pub:
+    chat_id string
+	latitude f32
+    longitude  f32
+    title string
+    address string
+    foursquare_id string
+    foursquare_type string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+// sendContact
+struct NewSendContact {
+pub:
+    chat_id string
+    phone_number string
+    first_name string
+    last_name string
+    vcard string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+// sendPoll
+struct NewSendPoll {
+pub:
+    chat_id string
+    question string
+    options []string
+    disable_notification bool
+    reply_to_message_id int
+    reply_markup string
+}
+// sendChatAction
+struct NewSendChatAction {
+pub:
+    chat_id string
+    action string
+}
+// getUserProfilePhotos
+struct NewGetUserProfilePhotos {
+pub:
+    user_id int
+    offset int
+    limit int
+}
