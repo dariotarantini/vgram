@@ -7,12 +7,12 @@ module vgram
 
 struct User {
 pub:
-	id            int    
-	first_name    string 
-	last_name     string    
-	username     string
+	id int    
+	first_name string 
+	last_name string    
+	username string
 	language_code string
-	is_bot        bool
+	is_bot bool
 }
 struct ChatPhoto {
 pub:
@@ -31,7 +31,7 @@ pub:
 	photo ChatPhoto 
 	description string
 	invite_link string
-	//pinned_message *Message
+	//pinned_message Message
 }
 struct MessageEntity {
 pub:
@@ -223,4 +223,28 @@ pub:
 struct InlineKeyboardMarkup {
 pub:
 	inline_keyboard [][]InlineKeyboardButton
+}
+
+
+// resp 
+struct RespUser {
+pub:
+	ok bool                
+	result User
+	error_code int                 
+	description string              
+}
+struct RespUpdates {
+pub:
+	ok bool                
+	result []Update
+	error_code int                 
+	description string              
+}
+struct RespMessage {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
 }

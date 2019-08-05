@@ -7,7 +7,6 @@ pub:
     timeout int
     allowed_updates []string
 }
-
 // sendMessage
 struct NewSendMessage {
 pub:
