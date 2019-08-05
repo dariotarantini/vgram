@@ -144,7 +144,7 @@ pub fn (d Bot) send_poll(e NewSendPoll) Message {
     }
     return resp.result
 }
-pub fn (d Bot) send_chat_action(e NewSendChatAction) Bool {
+pub fn (d Bot) send_chat_action(e NewSendChatAction) bool {
     x := d.http_request('sendChatAction', json.encode(e))
     resp := json.decode(RespBool, x) or { 
         panic('Failed to decode json')
