@@ -144,19 +144,19 @@ pub fn (d Bot) send_poll(e NewSendPoll) Message {
     }
     return resp.result
 }
-pub fn (d Bot) send_chat_action(e NewSendChatAction) Message {
+pub fn (d Bot) send_chat_action(e NewSendChatAction) Bool {
     x := d.http_request('sendChatAction', json.encode(e))
     resp := json.decode(RespBool, x) or { 
         panic('Failed to decode json')
-        return Message{}
+        return false
     }
     return resp.result
 }
-pub fn (d Bot) get_user_profile_photos(e NewGetUserProfilePhotos) Message {
+pub fn (d Bot) get_user_profile_photos(e NewGetUserProfilePhotos) UserProfilePhotos {
     x := d.http_request('getUserProfilePhotos', json.encode(e))
     resp := json.decode(RespUserProfilePhotos, x) or { 
         panic('Failed to decode json')
-        return Message{}
+        return UserProfilePhotos{}
     }
     return resp.result
 }
