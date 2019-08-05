@@ -19,8 +19,8 @@ for {
     for update in updates {
         if last_offset < update.update_id {
             last_offset = update.update_id
-            if update.message.text == '/start' {
-                bot.send_message(vgram.NewSendMessage{
+            match update.message.text {
+                '/start' => bot.send_message(vgram.NewSendMessage{
                     chat_id: update.message.from.id.str(),
                     text: 'Hi man'
                 })
