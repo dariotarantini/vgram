@@ -1,4 +1,4 @@
-import vgram
+import vpervenditti.vgram
 
 bot := vgram.new_bot('TOKEN', false) // <- set true to see debug log
 
