@@ -15,7 +15,7 @@ v install vpervenditti.vgram
 2. Click on or type /newbot to create a new bot and follow his instructions  
 3. Get the token Now, create a file named mybot.v and put this code:  
 ```
-import vgram
+import vpervenditti.vgram
 bot := vgram.new_bot('TOKEN', false) // <- set true to see debug log
 mut updates := []vgram.Update{}
 mut last_offset := 0
