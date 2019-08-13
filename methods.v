@@ -5,7 +5,7 @@ pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
     x := d.http_request('getUpdates', json.encode(e))
     resp := json.decode(RespUpdates, x) or { 
         panic('Failed to decode json')
-        return []Update{}
+        return [Update{}]
     }
     return resp.result
 }
