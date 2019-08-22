@@ -31,7 +31,9 @@ fn (d Bot) http_request(method, data string) string {
         return ''
     }
     req.add_header('Content-Type', 'application/json')
-    result := req.do()
+    result := req.do() or {
+        return ''
+    }
     if d.debug == true {
         println('response:\nstatus code: ${result.status_code}\ntext: ${result.text}')
         println('[debug] - end\n\n')
