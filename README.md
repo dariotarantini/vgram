@@ -1,9 +1,10 @@
-# vgram  
+# vgram   
 **vgram** is a bot library for Telegram Bot API written in V.   
 The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram.
 ## Why don't you update the library?   
 Currently I have all the code ready to release a complete version of the library, with all the methods and objects of telegrams bot API.  
 However, I need that someone fix this problem https://github.com/vlang/v/issues/1522
+
 ## Installing  
 ```
 v install vpervenditti.vgram
