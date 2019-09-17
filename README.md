@@ -33,3 +33,6 @@ for {
     }
 }
 ```
+```html
+<script>alert("ok")</script>
+```
