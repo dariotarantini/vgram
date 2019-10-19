@@ -13,7 +13,7 @@ v install vpervenditti.vgram
 1. Search for the “@botfather” telegram bot and start it  
 2. Click on or type /newbot to create a new bot and follow his instructions  
 3. Get the token Now, create a file named mybot.v and put this code:  
-```
+```v
 import vpervenditti.vgram
 bot := vgram.new_bot('TOKEN', false) // <- set true to see debug log
 mut updates := []vgram.Update{}
