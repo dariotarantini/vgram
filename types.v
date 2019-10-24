@@ -75,7 +75,7 @@ pub:
 	forward_signature string // Optional. For messages forwarded from channels, signature of the post author if present
 	forward_sender_name string // Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages
 	forward_date int // Optional. For forwarded messages, date the original message was sent in Unix time
-	reply_to_message Message // Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
+	reply_to_message &Message // Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
 	edit_date int // Optional. Date the message was last edited in Unix time
 	media_group_id string // Optional. The unique identifier of a media message group this message belongs to
 	author_signature string // Optional. Signature of the post author for messages in channels
@@ -106,7 +106,7 @@ pub:
 	channel_chat_created bool // Optional. Service message: the channel has been created. This field can‘t be received in a message coming through updates, because bot can’t be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel.
 	migrate_to_chat_id int // Optional. The group has been migrated to a supergroup with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
 	migrate_from_chat_id int // Optional. The supergroup has been migrated from a group with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
-	pinned_message Message // Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
+	pinned_message &Message // Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
 	invoice Invoice // Optional. Message is an invoice for a payment, information about the invoice. More about payments »
 	successful_payment SuccessfulPayment // Optional. Message is a service message about a successful payment, information about the payment. More about payments »
 	connected_website string // Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
