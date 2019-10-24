@@ -2,7 +2,7 @@ module vgram
 
 
 // This object represents an incoming update.At most one of the optional parameters can be present in any given update.
-struct Update {
+pub struct Update {
 pub:
 	update_id int // The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
 	message Message // Optional. New incoming message of any kind — text, photo, sticker, etc.
@@ -19,7 +19,7 @@ pub:
 
 
 // Contains information about the current status of a webhook.
-struct WebhookInfo {
+pub struct WebhookInfo {
 pub:
 	url string // Webhook URL, may be empty if webhook is not set up
 	has_custom_certificate bool // True, if a custom certificate was provided for webhook certificate checks
@@ -32,7 +32,7 @@ pub:
 
 
 // This object represents a Telegram user or bot.
-struct User {
+pub struct User {
 pub:
 	id int // Unique identifier for this user or bot
 	is_bot bool // True, if this user is a bot
@@ -44,7 +44,7 @@ pub:
 
 
 // This object represents a chat.
-struct Chat {
+pub struct Chat {
 pub:
 	id int // Unique identifier for this chat. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
 	@type string // Type of chat, can be either “private”, “group”, “supergroup” or “channel”
@@ -63,7 +63,7 @@ pub:
 
 
 // This object represents a message.
-struct Message {
+pub struct Message {
 pub:
 	message_id int // Unique message identifier inside this chat
 	from User // Optional. Sender, empty for messages sent to channels
@@ -116,7 +116,7 @@ pub:
 
 
 // This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
-struct MessageEntity {
+pub struct MessageEntity {
 pub:
 	@type string // Type of the entity. Can be mention (@username), hashtag, cashtag, bot_command, url, email, phone_number, bold (bold text), italic (italic text), code (monowidth string), pre (monowidth block), text_link (for clickable text URLs), text_mention (for users without usernames)
 	offset int // Offset in UTF-16 code units to the start of the entity
@@ -127,7 +127,7 @@ pub:
 
 
 // This object represents one size of a photo or a file / sticker thumbnail.
-struct PhotoSize {
+pub struct PhotoSize {
 pub:
 	file_id string // Identifier for this file
 	width int // Photo width
@@ -137,7 +137,7 @@ pub:
 
 
 // This object represents an audio file to be treated as music by the Telegram clients.
-struct Audio {
+pub struct Audio {
 pub:
 	file_id string // Identifier for this file
 	duration int // Duration of the audio in seconds as defined by sender
@@ -150,7 +150,7 @@ pub:
 
 
 // This object represents a general file (as opposed to photos, voice messages and audio files).
-struct Document {
+pub struct Document {
 pub:
 	file_id string // Identifier for this file
 	thumb PhotoSize // Optional. Document thumbnail as defined by sender
@@ -161,7 +161,7 @@ pub:
 
 
 // This object represents a video file.
-struct Video {
+pub struct Video {
 pub:
 	file_id string // Identifier for this file
 	width int // Video width as defined by sender
@@ -174,7 +174,7 @@ pub:
 
 
 // This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
-struct Animation {
+pub struct Animation {
 pub:
 	file_id string // Identifier for this file
 	width int // Video width as defined by sender
@@ -188,7 +188,7 @@ pub:
 
 
 // This object represents a voice note.
-struct Voice {
+pub struct Voice {
 pub:
 	file_id string // Identifier for this file
 	duration int // Duration of the audio in seconds as defined by sender
@@ -198,7 +198,7 @@ pub:
 
 
 // This object represents a video message (available in Telegram apps as of v.4.0).
-struct VideoNote {
+pub struct VideoNote {
 pub:
 	file_id string // Identifier for this file
 	length int // Video width and height (diameter of the video message) as defined by sender
@@ -209,7 +209,7 @@ pub:
 
 
 // This object represents a phone contact.
-struct Contact {
+pub struct Contact {
 pub:
 	phone_number string // Contact's phone number
 	first_name string // Contact's first name
@@ -220,7 +220,7 @@ pub:
 
 
 // This object represents a point on the map.
-struct Location {
+pub struct Location {
 pub:
 	longitude f32 // Longitude as defined by sender
 	latitude f32 // Latitude as defined by sender
@@ -228,7 +228,7 @@ pub:
 
 
 // This object represents a venue.
-struct Venue {
+pub struct Venue {
 pub:
 	location Location // Venue location
 	title string // Name of the venue
@@ -239,7 +239,7 @@ pub:
 
 
 // This object contains information about one answer option in a poll.
-struct PollOption {
+pub struct PollOption {
 pub:
 	text string // Option text, 1-100 characters
 	voter_count int // Number of users that voted for this option
@@ -247,7 +247,7 @@ pub:
 
 
 // This object contains information about a poll.
-struct Poll {
+pub struct Poll {
 pub:
 	id string // Unique poll identifier
 	question string // Poll question, 1-255 characters
@@ -257,7 +257,7 @@ pub:
 
 
 // This object represent a user&#39;s profile pictures.
-struct UserProfilePhotos {
+pub struct UserProfilePhotos {
 pub:
 	total_count int // Total number of profile pictures the target user has
 	photos [][]PhotoSize // Requested profile pictures (in up to 4 sizes each)
@@ -265,7 +265,7 @@ pub:
 
 
 // This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
-struct File {
+pub struct File {
 pub:
 	file_id string // Identifier for this file
 	file_size int // Optional. File size, if known
@@ -274,7 +274,7 @@ pub:
 
 
 // This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
-struct ReplyKeyboardMarkup {
+pub struct ReplyKeyboardMarkup {
 pub:
 	keyboard [][]KeyboardButton // Array of button rows, each represented by an Array of KeyboardButton objects
 	resize_keyboard bool // Optional. Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard.
@@ -284,7 +284,7 @@ pub:
 
 
 // This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields are mutually exclusive.
-struct KeyboardButton {
+pub struct KeyboardButton {
 pub:
 	text string // Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed
 	request_contact bool // Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only
@@ -293,7 +293,7 @@ pub:
 
 
 // Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).
-struct ReplyKeyboardRemove {
+pub struct ReplyKeyboardRemove {
 pub:
 	remove_keyboard bool // Requests clients to remove the custom keyboard (user will not be able to summon this keyboard; if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup)
 	selective bool // Optional. Use this parameter if you want to remove the keyboard for specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.Example: A user votes in a poll, bot returns confirmation message in reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet.
@@ -301,14 +301,14 @@ pub:
 
 
 // This object represents an inline keyboard that appears right next to the message it belongs to.
-struct InlineKeyboardMarkup {
+pub struct InlineKeyboardMarkup {
 pub:
 	inline_keyboard [][]InlineKeyboardButton // Array of button rows, each represented by an Array of InlineKeyboardButton objects
 }
 
 
 // This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
-struct InlineKeyboardButton {
+pub struct InlineKeyboardButton {
 pub:
 	text string // Label text on the button
 	url string // Optional. HTTP or tg:// url to be opened when button is pressed
@@ -322,7 +322,7 @@ pub:
 
 
 // This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:
-struct LoginUrl {
+pub struct LoginUrl {
 pub:
 	url string // An HTTP URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data.NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization.
 	forward_text string // Optional. New text of the button in forwarded messages.
@@ -332,7 +332,7 @@ pub:
 
 
 // This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name will be present.
-struct CallbackQuery {
+pub struct CallbackQuery {
 pub:
 	id string // Unique identifier for this query
 	from User // Sender
@@ -345,7 +345,7 @@ pub:
 
 
 // Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot‘s message and tapped ’Reply&#39;). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode.
-struct ForceReply {
+pub struct ForceReply {
 pub:
 	force_reply bool // Shows reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply'
 	selective bool // Optional. Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
@@ -353,7 +353,7 @@ pub:
 
 
 // This object represents a chat photo.
-struct ChatPhoto {
+pub struct ChatPhoto {
 pub:
 	small_file_id string // File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
 	big_file_id string // File identifier of big (640x640) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
@@ -361,7 +361,7 @@ pub:
 
 
 // This object contains information about one member of a chat.
-struct ChatMember {
+pub struct ChatMember {
 pub:
 	user User // Information about the user
 	status string // The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”
@@ -385,7 +385,7 @@ pub:
 
 
 // Describes actions that a non-administrator user is allowed to take in a chat.
-struct ChatPermissions {
+pub struct ChatPermissions {
 pub:
 	can_send_messages bool // Optional. True, if the user is allowed to send text messages, contacts, locations and venues
 	can_send_media_messages bool // Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies can_send_messages
@@ -399,7 +399,7 @@ pub:
 
 
 // Contains information about why a request was unsuccessful.
-struct ResponseParameters {
+pub struct ResponseParameters {
 pub:
 	migrate_to_chat_id int // Optional. The group has been migrated to a supergroup with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
 	retry_after int // Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated
@@ -407,7 +407,7 @@ pub:
 
 
 // This object represents the content of a media message to be sent. It should be one of
-struct InputMedia {
+pub struct InputMedia {
 pub:
 	@type string // Type of the result, must be photo
 	media string // File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
@@ -417,7 +417,7 @@ pub:
 
 
 // Represents a photo to be sent.
-struct InputMediaPhoto {
+pub struct InputMediaPhoto {
 pub:
 	@type string // Type of the result, must be photo
 	media string // File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
@@ -427,7 +427,7 @@ pub:
 
 
 // Represents a video to be sent.
-struct InputMediaVideo {
+pub struct InputMediaVideo {
 pub:
 	@type string // Type of the result, must be video
 	media string // File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
@@ -442,7 +442,7 @@ pub:
 
 
 // Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
-struct InputMediaAnimation {
+pub struct InputMediaAnimation {
 pub:
 	@type string // Type of the result, must be animation
 	media string // File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
@@ -456,7 +456,7 @@ pub:
 
 
 // Represents an audio file to be treated as music to be sent.
-struct InputMediaAudio {
+pub struct InputMediaAudio {
 pub:
 	@type string // Type of the result, must be audio
 	media string // File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
@@ -470,7 +470,7 @@ pub:
 
 
 // Represents a general file to be sent.
-struct InputMediaDocument {
+pub struct InputMediaDocument {
 pub:
 	@type string // Type of the result, must be document
 	media string // File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
@@ -481,7 +481,7 @@ pub:
 
 
 // This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
-struct InputFile {
+pub struct InputFile {
 pub:
 	chat_id string // Yes
 	text string // Yes
@@ -494,7 +494,7 @@ pub:
 
 
 // This object represents a sticker.
-struct Sticker {
+pub struct Sticker {
 pub:
 	file_id string // Identifier for this file
 	width int // Sticker width
@@ -509,7 +509,7 @@ pub:
 
 
 // This object represents a sticker set.
-struct StickerSet {
+pub struct StickerSet {
 pub:
 	name string // Sticker set name
 	title string // Sticker set title
@@ -520,7 +520,7 @@ pub:
 
 
 // This object describes the position on faces where a mask should be placed by default.
-struct MaskPosition {
+pub struct MaskPosition {
 pub:
 	point string // The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”.
 	x_shift f32 // Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place mask just to the left of the default mask position.
@@ -530,7 +530,7 @@ pub:
 
 
 // This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
-struct InlineQuery {
+pub struct InlineQuery {
 pub:
 	id string // Unique identifier for this query
 	from User // Sender
@@ -541,7 +541,7 @@ pub:
 
 
 // This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:
-struct InlineQueryResult {
+pub struct InlineQueryResult {
 pub:
 	@type string // Type of the result, must be article
 	id string // Unique identifier for this result, 1-64 Bytes
@@ -558,7 +558,7 @@ pub:
 
 
 // Represents a link to an article or web page.
-struct InlineQueryResultArticle {
+pub struct InlineQueryResultArticle {
 pub:
 	@type string // Type of the result, must be article
 	id string // Unique identifier for this result, 1-64 Bytes
@@ -575,7 +575,7 @@ pub:
 
 
 // Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
-struct InlineQueryResultPhoto {
+pub struct InlineQueryResultPhoto {
 pub:
 	@type string // Type of the result, must be photo
 	id string // Unique identifier for this result, 1-64 bytes
@@ -593,7 +593,7 @@ pub:
 
 
 // Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
-struct InlineQueryResultGif {
+pub struct InlineQueryResultGif {
 pub:
 	@type string // Type of the result, must be gif
 	id string // Unique identifier for this result, 1-64 bytes
@@ -611,7 +611,7 @@ pub:
 
 
 // Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
-struct InlineQueryResultMpeg4Gif {
+pub struct InlineQueryResultMpeg4Gif {
 pub:
 	@type string // Type of the result, must be mpeg4_gif
 	id string // Unique identifier for this result, 1-64 bytes
@@ -629,7 +629,7 @@ pub:
 
 
 // Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
-struct InlineQueryResultVideo {
+pub struct InlineQueryResultVideo {
 pub:
 	@type string // Type of the result, must be video
 	id string // Unique identifier for this result, 1-64 bytes
@@ -649,7 +649,7 @@ pub:
 
 
 // Represents a link to an mp3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
-struct InlineQueryResultAudio {
+pub struct InlineQueryResultAudio {
 pub:
 	@type string // Type of the result, must be audio
 	id string // Unique identifier for this result, 1-64 bytes
@@ -665,7 +665,7 @@ pub:
 
 
 // Represents a link to a voice recording in an .ogg container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
-struct InlineQueryResultVoice {
+pub struct InlineQueryResultVoice {
 pub:
 	@type string // Type of the result, must be voice
 	id string // Unique identifier for this result, 1-64 bytes
@@ -680,7 +680,7 @@ pub:
 
 
 // Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
-struct InlineQueryResultDocument {
+pub struct InlineQueryResultDocument {
 pub:
 	@type string // Type of the result, must be document
 	id string // Unique identifier for this result, 1-64 bytes
@@ -699,7 +699,7 @@ pub:
 
 
 // Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
-struct InlineQueryResultLocation {
+pub struct InlineQueryResultLocation {
 pub:
 	@type string // Type of the result, must be location
 	id string // Unique identifier for this result, 1-64 Bytes
@@ -716,7 +716,7 @@ pub:
 
 
 // Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
-struct InlineQueryResultVenue {
+pub struct InlineQueryResultVenue {
 pub:
 	@type string // Type of the result, must be venue
 	id string // Unique identifier for this result, 1-64 Bytes
@@ -735,7 +735,7 @@ pub:
 
 
 // Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
-struct InlineQueryResultContact {
+pub struct InlineQueryResultContact {
 pub:
 	@type string // Type of the result, must be contact
 	id string // Unique identifier for this result, 1-64 Bytes
@@ -752,7 +752,7 @@ pub:
 
 
 // Represents a Game.
-struct InlineQueryResultGame {
+pub struct InlineQueryResultGame {
 pub:
 	@type string // Type of the result, must be game
 	id string // Unique identifier for this result, 1-64 bytes
@@ -762,7 +762,7 @@ pub:
 
 
 // Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
-struct InlineQueryResultCachedPhoto {
+pub struct InlineQueryResultCachedPhoto {
 pub:
 	@type string // Type of the result, must be photo
 	id string // Unique identifier for this result, 1-64 bytes
@@ -777,7 +777,7 @@ pub:
 
 
 // Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
-struct InlineQueryResultCachedGif {
+pub struct InlineQueryResultCachedGif {
 pub:
 	@type string // Type of the result, must be gif
 	id string // Unique identifier for this result, 1-64 bytes
@@ -791,7 +791,7 @@ pub:
 
 
 // Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
-struct InlineQueryResultCachedMpeg4Gif {
+pub struct InlineQueryResultCachedMpeg4Gif {
 pub:
 	@type string // Type of the result, must be mpeg4_gif
 	id string // Unique identifier for this result, 1-64 bytes
@@ -805,7 +805,7 @@ pub:
 
 
 // Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.
-struct InlineQueryResultCachedSticker {
+pub struct InlineQueryResultCachedSticker {
 pub:
 	@type string // Type of the result, must be sticker
 	id string // Unique identifier for this result, 1-64 bytes
@@ -816,7 +816,7 @@ pub:
 
 
 // Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
-struct InlineQueryResultCachedDocument {
+pub struct InlineQueryResultCachedDocument {
 pub:
 	@type string // Type of the result, must be document
 	id string // Unique identifier for this result, 1-64 bytes
@@ -831,7 +831,7 @@ pub:
 
 
 // Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
-struct InlineQueryResultCachedVideo {
+pub struct InlineQueryResultCachedVideo {
 pub:
 	@type string // Type of the result, must be video
 	id string // Unique identifier for this result, 1-64 bytes
@@ -846,7 +846,7 @@ pub:
 
 
 // Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
-struct InlineQueryResultCachedVoice {
+pub struct InlineQueryResultCachedVoice {
 pub:
 	@type string // Type of the result, must be voice
 	id string // Unique identifier for this result, 1-64 bytes
@@ -860,7 +860,7 @@ pub:
 
 
 // Represents a link to an mp3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
-struct InlineQueryResultCachedAudio {
+pub struct InlineQueryResultCachedAudio {
 pub:
 	@type string // Type of the result, must be audio
 	id string // Unique identifier for this result, 1-64 bytes
@@ -873,7 +873,7 @@ pub:
 
 
 // This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types:
-struct InputMessageContent {
+pub struct InputMessageContent {
 pub:
 	message_text string // Text of the message to be sent, 1-4096 characters
 	parse_mode string // Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
@@ -882,7 +882,7 @@ pub:
 
 
 // Represents the content of a text message to be sent as the result of an inline query.
-struct InputTextMessageContent {
+pub struct InputTextMessageContent {
 pub:
 	message_text string // Text of the message to be sent, 1-4096 characters
 	parse_mode string // Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
@@ -891,7 +891,7 @@ pub:
 
 
 // Represents the content of a location message to be sent as the result of an inline query.
-struct InputLocationMessageContent {
+pub struct InputLocationMessageContent {
 pub:
 	latitude f32 // Latitude of the location in degrees
 	longitude f32 // Longitude of the location in degrees
@@ -900,7 +900,7 @@ pub:
 
 
 // Represents the content of a venue message to be sent as the result of an inline query.
-struct InputVenueMessageContent {
+pub struct InputVenueMessageContent {
 pub:
 	latitude f32 // Latitude of the venue in degrees
 	longitude f32 // Longitude of the venue in degrees
@@ -912,7 +912,7 @@ pub:
 
 
 // Represents the content of a contact message to be sent as the result of an inline query.
-struct InputContactMessageContent {
+pub struct InputContactMessageContent {
 pub:
 	phone_number string // Contact's phone number
 	first_name string // Contact's first name
@@ -922,7 +922,7 @@ pub:
 
 
 // Represents a result of an inline query that was chosen by the user and sent to their chat partner.
-struct ChosenInlineResult {
+pub struct ChosenInlineResult {
 pub:
 	result_id string // The unique identifier for the result that was chosen
 	from User // The user that chose the result
@@ -933,7 +933,7 @@ pub:
 
 
 // This object represents a portion of the price for goods or services.
-struct LabeledPrice {
+pub struct LabeledPrice {
 pub:
 	label string // Portion label
 	amount int // Price of the product in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
@@ -941,7 +941,7 @@ pub:
 
 
 // This object contains basic information about an invoice.
-struct Invoice {
+pub struct Invoice {
 pub:
 	title string // Product name
 	description string // Product description
@@ -952,7 +952,7 @@ pub:
 
 
 // This object represents a shipping address.
-struct ShippingAddress {
+pub struct ShippingAddress {
 pub:
 	country_code string // ISO 3166-1 alpha-2 country code
 	state string // State, if applicable
@@ -964,7 +964,7 @@ pub:
 
 
 // This object represents information about an order.
-struct OrderInfo {
+pub struct OrderInfo {
 pub:
 	name string // Optional. User name
 	phone_number string // Optional. User's phone number
@@ -974,7 +974,7 @@ pub:
 
 
 // This object represents one shipping option.
-struct ShippingOption {
+pub struct ShippingOption {
 pub:
 	id string // Shipping option identifier
 	title string // Option title
@@ -983,7 +983,7 @@ pub:
 
 
 // This object contains basic information about a successful payment.
-struct SuccessfulPayment {
+pub struct SuccessfulPayment {
 pub:
 	currency string // Three-letter ISO 4217 currency code
 	total_amount int // Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
@@ -996,7 +996,7 @@ pub:
 
 
 // This object contains information about an incoming shipping query.
-struct ShippingQuery {
+pub struct ShippingQuery {
 pub:
 	id string // Unique query identifier
 	from User // User who sent the query
@@ -1006,7 +1006,7 @@ pub:
 
 
 // This object contains information about an incoming pre-checkout query.
-struct PreCheckoutQuery {
+pub struct PreCheckoutQuery {
 pub:
 	id string // Unique query identifier
 	from User // User who sent the query
@@ -1019,7 +1019,7 @@ pub:
 
 
 // Contains information about Telegram Passport data shared with the bot by the user.
-struct PassportData {
+pub struct PassportData {
 pub:
 	data []EncryptedPassportElement // Array with information about documents and other Telegram Passport elements that was shared with the bot
 	credentials EncryptedCredentials // Encrypted credentials required to decrypt the data
@@ -1027,7 +1027,7 @@ pub:
 
 
 // This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format when decrypted and don&#39;t exceed 10MB.
-struct PassportFile {
+pub struct PassportFile {
 pub:
 	file_id string // Identifier for this file
 	file_size int // File size
@@ -1036,7 +1036,7 @@ pub:
 
 
 // Contains information about documents or other Telegram Passport elements shared with the bot by the user.
-struct EncryptedPassportElement {
+pub struct EncryptedPassportElement {
 pub:
 	@type string // Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”.
 	data string // Optional. Base64-encoded encrypted Telegram Passport element data provided by the user, available for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can be decrypted and verified using the accompanying EncryptedCredentials.
@@ -1052,7 +1052,7 @@ pub:
 
 
 // Contains data required for decrypting and authenticating EncryptedPassportElement. See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
-struct EncryptedCredentials {
+pub struct EncryptedCredentials {
 pub:
 	data string // Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets required for EncryptedPassportElement decryption and authentication
 	hash string // Base64-encoded data hash for data authentication
@@ -1061,7 +1061,7 @@ pub:
 
 
 // This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:
-struct PassportElementError {
+pub struct PassportElementError {
 pub:
 	source string // Error source, must be data
 	@type string // The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
@@ -1072,7 +1072,7 @@ pub:
 
 
 // Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field&#39;s value changes.
-struct PassportElementErrorDataField {
+pub struct PassportElementErrorDataField {
 pub:
 	source string // Error source, must be data
 	@type string // The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
@@ -1083,7 +1083,7 @@ pub:
 
 
 // Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
-struct PassportElementErrorFrontSide {
+pub struct PassportElementErrorFrontSide {
 pub:
 	source string // Error source, must be front_side
 	@type string // The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”
@@ -1093,7 +1093,7 @@ pub:
 
 
 // Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes.
-struct PassportElementErrorReverseSide {
+pub struct PassportElementErrorReverseSide {
 pub:
 	source string // Error source, must be reverse_side
 	@type string // The section of the user's Telegram Passport which has the issue, one of “driver_license”, “identity_card”
@@ -1103,7 +1103,7 @@ pub:
 
 
 // Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
-struct PassportElementErrorSelfie {
+pub struct PassportElementErrorSelfie {
 pub:
 	source string // Error source, must be selfie
 	@type string // The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”
@@ -1113,7 +1113,7 @@ pub:
 
 
 // Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
-struct PassportElementErrorFile {
+pub struct PassportElementErrorFile {
 pub:
 	source string // Error source, must be file
 	@type string // The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
@@ -1123,7 +1123,7 @@ pub:
 
 
 // Represents an issue with a list of scans. The error is considered resolved when the list of files containing the scans changes.
-struct PassportElementErrorFiles {
+pub struct PassportElementErrorFiles {
 pub:
 	source string // Error source, must be files
 	@type string // The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
@@ -1133,7 +1133,7 @@ pub:
 
 
 // Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved when the file changes.
-struct PassportElementErrorTranslationFile {
+pub struct PassportElementErrorTranslationFile {
 pub:
 	source string // Error source, must be translation_file
 	@type string // Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
@@ -1143,7 +1143,7 @@ pub:
 
 
 // Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
-struct PassportElementErrorTranslationFiles {
+pub struct PassportElementErrorTranslationFiles {
 pub:
 	source string // Error source, must be translation_files
 	@type string // Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
@@ -1153,7 +1153,7 @@ pub:
 
 
 // Represents an issue in an unspecified place. The error is considered resolved when new data is added.
-struct PassportElementErrorUnspecified {
+pub struct PassportElementErrorUnspecified {
 pub:
 	source string // Error source, must be unspecified
 	@type string // Type of element of the user's Telegram Passport which has the issue
@@ -1163,7 +1163,7 @@ pub:
 
 
 // This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
-struct Game {
+pub struct Game {
 pub:
 	title string // Title of the game
 	description string // Description of the game
@@ -1175,7 +1175,7 @@ pub:
 
 
 // A placeholder, currently holds no information. Use BotFather to set up your game.
-struct CallbackGame {
+pub struct CallbackGame {
 pub:
 	user_id int // Yes
 	score int // Yes
@@ -1188,7 +1188,7 @@ pub:
 
 
 // This object represents one row of the high scores table for a game.
-struct GameHighScore {
+pub struct GameHighScore {
 pub:
 	position int // Position in high score table for the game
 	user User // User
