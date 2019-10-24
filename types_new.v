@@ -1,6 +1,6 @@
 module vgram
 // getUpdates
-struct NewGetUpdates {
+pub struct NewGetUpdates {
 pub:
     offset int
     limit int
@@ -8,7 +8,7 @@ pub:
     allowed_updates []string
 }
 // sendMessage
-struct NewSendMessage {
+pub struct NewSendMessage {
 pub:
     chat_id string
     text string
@@ -19,7 +19,7 @@ pub:
     reply_markup string
 }
 // forwardMessage
-struct NewForwardMessage {
+pub struct NewForwardMessage {
 pub:
     chat_id string
 	from_chat_id string
@@ -27,7 +27,7 @@ pub:
 	message_id int
 }
 // sendPhoto
-struct NewSendPhoto {
+pub struct NewSendPhoto {
 pub:
     chat_id string
 	photo string
@@ -39,7 +39,7 @@ pub:
     reply_markup string
 }
 // sendAudio
-struct NewSendAudio {
+pub struct NewSendAudio {
 pub:
     chat_id string
 	audio string
@@ -53,7 +53,7 @@ pub:
     reply_markup string
 }
 // sendDocument
-struct NewSendDocument {
+pub struct NewSendDocument {
 pub:
     chat_id string
 	document string
@@ -65,7 +65,7 @@ pub:
     reply_markup string
 }
 // sendVideo
-struct NewSendVideo {
+pub struct NewSendVideo {
 pub:
     chat_id string
 	video string
@@ -81,7 +81,7 @@ pub:
     reply_markup string
 }
 // sendAnimation
-struct NewSendAnimation {
+pub struct NewSendAnimation {
 pub:
     chat_id string
 	animation string
@@ -96,7 +96,7 @@ pub:
     reply_markup string
 }
 // sendVoice
-struct NewSendVoice {
+pub struct NewSendVoice {
 pub:
     chat_id string
 	voice string
@@ -109,7 +109,7 @@ pub:
     reply_markup string
 }
 // sendVideoNote
-struct NewSendVideoNote {
+pub struct NewSendVideoNote {
 pub:
     chat_id string
 	video_note string
@@ -123,7 +123,7 @@ pub:
     reply_markup string
 }
 // sendMediaGroup
-struct NewSendMediaGroup {
+pub struct NewSendMediaGroup {
 pub:
     chat_id string
 	media string // json of []InputMedia (not implemented)
@@ -132,7 +132,7 @@ pub:
     reply_markup string
 }
 // sendLocation
-struct NewSendLocation {
+pub struct NewSendLocation {
 pub:
     chat_id string
 	latitude f32
@@ -143,7 +143,7 @@ pub:
     reply_markup string
 }
 // editMessageLiveLocation
-struct NewEditMessageLiveLocation {
+pub struct NewEditMessageLiveLocation {
 pub:
     chat_id string
 	message_id int
@@ -153,7 +153,7 @@ pub:
     reply_markup string
 }
 // stopMessageLiveLocation
-struct NewStopMessageLiveLocation {
+pub struct NewStopMessageLiveLocation {
 pub:
     chat_id string
 	message_id int
@@ -161,7 +161,7 @@ pub:
     reply_markup string
 }
 // sendVenue
-struct NewSendVenue {
+pub struct NewSendVenue {
 pub:
     chat_id string
 	latitude f32
@@ -175,7 +175,7 @@ pub:
     reply_markup string
 }
 // sendContact
-struct NewSendContact {
+pub struct NewSendContact {
 pub:
     chat_id string
     phone_number string
@@ -187,7 +187,7 @@ pub:
     reply_markup string
 }
 // sendPoll
-struct NewSendPoll {
+pub struct NewSendPoll {
 pub:
     chat_id string
     question string
@@ -197,24 +197,24 @@ pub:
     reply_markup string
 }
 // sendChatAction
-struct NewSendChatAction {
+pub struct NewSendChatAction {
 pub:
     chat_id string
     action string
 }
 // getUserProfilePhotos
-struct NewGetUserProfilePhotos {
+pub struct NewGetUserProfilePhotos {
 pub:
     user_id int
     offset int
     limit int
 }
 // getFile
-struct NewGetFile {
+pub struct NewGetFile {
 pub:
     file_id string
 }
-struct NewAnswerInlineQuery {
+pub struct NewAnswerInlineQuery {
 pub:
     inline_query_id string
     results string  // json of []InlineQueryResult (not implemented)
