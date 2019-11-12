@@ -1,7 +1,6 @@
 module vgram
 
 import http
-import json
 import time
 
 struct Bot {

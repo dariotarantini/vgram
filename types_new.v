@@ -224,3 +224,48 @@ pub:
     switch_pm_text string
     switch_pm_parameter string
 }
+
+
+// resp 
+struct RespUser {
+pub:
+	ok bool                
+	result User
+	error_code int                 
+	description string              
+}
+struct RespBool {
+pub:
+	ok bool                
+	result bool
+	error_code int                 
+	description string              
+}
+struct RespUpdates {
+pub:
+	ok bool                
+	result []Update
+	error_code int                 
+	description string              
+}
+struct RespMessage {
+pub:
+	ok bool                
+	result Message
+	error_code int                 
+	description string              
+}
+struct RespUserProfilePhotos {
+pub:
+	ok bool                
+	result UserProfilePhotos
+	error_code int                 
+	description string              
+}
+struct RespFile {
+pub:
+	ok bool                
+	result File
+	error_code int                 
+	description string              
+}
