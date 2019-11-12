@@ -1,5 +1,6 @@
 module vgram
 
+import json
 
 pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
     x := d.http_request('getUpdates', json.encode(e))

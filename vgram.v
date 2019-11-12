@@ -3,7 +3,8 @@ module vgram
 import http
 import time
 
-struct Bot {
+pub struct Bot {
+pub:
     token string
     debug bool
 }
