@@ -1,42 +1,30 @@
 module vgram
 
-import http
+import net.http
 import time
 
 pub struct Bot {
 pub:
     token string
-    debug bool
 }
 
-pub fn new_bot(utoken string, udebug bool) Bot {
+pub fn new_bot(utoken string) Bot {
     return Bot{
         token: utoken
-        debug: udebug
     }
 }
 
-fn (d Bot) http_request(method, data string) string {
-    url := 'https://api.telegram.org/bot'+d.token+'/'+method
-    if d.debug == true {
-        println('[debug] - ${time.now().uni}')
-        println('request:\nurl: $url\npost data:$data\n')
-    }
-
+fn (d Bot) http_request(method, data string) ?string {
+    url := "https://api.telegram.org/bot${d.token}/${method}"
     mut req := http.new_request('POST', url, data) or { 
-        if d.debug == true {
-            println('PANIC! http request failed!')
-            println('[debug] - end\n\n')
-        }
-        return ''
+        return error("Unable to init request")
     }
     req.add_header('Content-Type', 'application/json')
     result := req.do() or {
-        return ''
+        return error("Unable to do request")
     }
-    if d.debug == true {
-        println('response:\nstatus code: ${result.status_code}\ntext: ${result.text}')
-        println('[debug] - end\n\n')
-    }
-    return result.text
+    resp := json.decode(Responser, result.text) or { 
+        return error("Failed to decode json")
+    }    
+	return resp.result
 }

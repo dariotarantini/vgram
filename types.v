@@ -1,5 +1,12 @@
 module vgram
 
+pub struct Responser {
+pub:
+	ok bool                
+	result string [raw]
+	error_code int                 
+	description string              
+}
 
 // This object represents an incoming update.At most one of the optional parameters can be present in any given update.
 pub struct Update {
