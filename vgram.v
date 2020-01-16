@@ -1,7 +1,6 @@
 module vgram
 
 import net.http
-import time
 
 pub struct Bot {
 pub:
