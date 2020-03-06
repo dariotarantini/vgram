@@ -13,22 +13,29 @@ v install vpervenditti.vgram
 2. Click on or type /newbot to create a new bot and follow his instructions  
 3. Get the token Now, create a file named mybot.v and put this code:  
 ```v
+module main
+
 import vpervenditti.vgram
-bot := vgram.new_bot('TOKEN', false) // <- set true to see debug log
-mut updates := []vgram.Update{}
-mut last_offset := 0
-for {
-    updates = bot.get_updates(vgram.NewGetUpdates{offset: last_offset, limit: 100})
-    for update in updates {
-        if last_offset < update.update_id {
-            last_offset = update.update_id
-            match update.message.text {
-                '/start' => bot.send_message(vgram.NewSendMessage{
-                    chat_id: update.message.from.id.str(),
-                    text: 'Hi man'
-                })
+
+
+fn main(){
+    bot := vgram.new_bot('INSERT TOKEN HERE')
+    mut updates := [vgram.Update{}]
+    mut last_offset := 0
+    for {
+        updates = bot.get_updates(vgram.NewGetUpdates{offset: last_offset, limit: 100})
+        for update in updates {
+            if last_offset < update.update_id {
+                last_offset = update.update_id
+                if update.message.text == "/start" {
+                    bot.send_message(vgram.NewSendMessage{
+                        chat_id: update.message.from.id.str(),
+                        text: 'Hi man'
+                    })
+                }
             }
         }
     }
 }
+
 ```

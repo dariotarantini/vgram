@@ -9,21 +9,19 @@ pub:
     timeout int
     allowed_updates []string
 }
-pub fn (d Bot) get_updates(e NewGetUpdates) ?[]Update {
-    x := d.http_request('getUpdates', json.encode(e)) or {
-		return error(err)
-	}
+pub fn (d Bot) get_updates(e NewGetUpdates) []Update {
+    x := d.http_request('getUpdates', json.encode(e))
     resp := json.decode([]Update, x) or {
-		return error("Failed to decode json")
+      println("Failed to decode json")
+      return [Update{}]
     }
     return resp
 }
-pub fn (d Bot) get_me() ?User {
-    x := d.http_request('getMe', '') or {
-		return error(err)
-	}
+pub fn (d Bot) get_me() User {
+    x := d.http_request('getMe', '')
     resp := json.decode(User, x) or {
-		return error("Failed to decode json")
+		println("Failed to decode json")
+    return User{}
     }
     return resp
 }
@@ -39,12 +37,11 @@ pub:
     reply_to_message_id int
     reply_markup string
 }
-pub fn (d Bot) send_message(e NewSendMessage) ?Message {
-    x := d.http_request('sendMessage', json.encode(e)) or {
-		return error(err)
-	}
+pub fn (d Bot) send_message(e NewSendMessage) Message {
+    x := d.http_request('sendMessage', json.encode(e))
     resp := json.decode(Message, x) or {
-		return error("Failed to decode json")
+		println("Failed to decode json")
+    return Message{}
     }
     return resp
 }

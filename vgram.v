@@ -13,17 +13,27 @@ pub fn new_bot(utoken string) Bot {
     }
 }
 
-fn (d Bot) http_request(method, data string) ?string {
-    url := "https://api.telegram.org/bot${d.token}/${method}"
-    mut req := http.new_request('POST', url, data) or { 
-        return error("Unable to init request")
+fn (d Bot) http_request(method, _data string) string {
+    req := http.Request{
+        method: "POST"
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        cookies: map[string]string
+        data: _data
+        url: "https://api.telegram.org/bot${d.token}/${method}"
+        user_agent: ""
+        verbose: false
+        user_ptr: 0
+        ws_func: 0
     }
-    req.add_header('Content-Type', 'application/json')
     result := req.do() or {
-        return error("Unable to do request")
+        println("Unable to do request")
+        return ""
     }
     resp := json.decode(Responser, result.text) or { 
-        return error("Failed to decode json")
+        println("Failed to decode json")
+        return ""
     }    
 	return resp.result
 }
