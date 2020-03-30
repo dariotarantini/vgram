@@ -1,9 +1,14 @@
 module vgram
 
-pub struct Responser {
+pub struct ResponserOK {
 pub:
 	ok bool                
-	result string [raw]
+	result string [raw]          
+}
+
+pub struct ResponserNotOK {
+pub:
+	ok bool                
 	error_code int                 
 	description string              
 }
