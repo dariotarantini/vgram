@@ -2,6 +2,7 @@ module vgram
 
 import net.http
 import time
+import json
 
 pub struct Bot {
 pub:
