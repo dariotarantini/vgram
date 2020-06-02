@@ -55,5 +55,6 @@ bot_instance.method_name({
 })
 
 - method_name and method_arg* shoud be in snake_case
+- float value should be text (eg "1.23")
 ```
 Thats it. You are ready to go.
