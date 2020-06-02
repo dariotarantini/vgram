@@ -2,30 +2,11 @@
 **vgram** is a bot library for Telegram Bot API written in V.   
 The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram.
 
-It currently implement every method from Telegram Bot API 4.4.
+It currently implement every method from Telegram Bot API 4.4
 ## Installing  
 ```
 v install vpervenditti.vgram
 ```
-Now, edit *VPATH/vlib/builtin/option.v* and increase the option data byte, like `30000`. eg:
-```v
-...
-struct Option {
-	data    [30000]byte
-	error   string
-	ecode   int
-	ok      bool
-	is_none bool
-}
-
-// `fn foo() ?Foo { return foo }` => `fn foo() ?Foo { return opt_ok(foo); }`
-fn opt_ok(data voidptr, size int) Option {
-	if size >= 30000 {
-		panic('option size too big: $size (max is 30000), this is a temporary limit')
-	}
-...
-```
-Now, run make again to rebuild the compiler.
 
 ## Getting started  
 1. Search for the “@botfather” telegram bot and start it  
@@ -62,18 +43,17 @@ fn main(){
 ```
 ## Examples  
 * [`hi_man.v`](examples/hi_man.php) - a dead simple Telegram bot in V
-* [`vlangbot`](examples/vlangbot.v) - run your own instance of [vlangbot](https://t.me/vlangbot)!  
 
 ## Documentation  
 You can find the documentation directly on the [Telegram website](https://core.telegram.org/bots/api) or you can read it in vgram source. See methods.v and types.v.
 
 Call a method using:
 ```v
-method_name1(vgram.NewMethodName2{
-    method_args3: xxx
+bot_instance.method_name({
+    method_arg1: "some text"
+    method_arg1: 123 // or int
 })
 
-method_name1 and method_args3 shoud be in snake_case
-NewMethodName2 shoud be in PastelCase
+- method_name and method_arg* shoud be in snake_case
 ```
 Thats it. You are ready to go.

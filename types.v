@@ -234,8 +234,8 @@ pub:
 // This object represents a point on the map.
 pub struct Location {
 pub:
-	longitude f32 // Longitude as defined by sender
-	latitude f32 // Latitude as defined by sender
+	longitude string // Longitude as defined by sender
+	latitude string // Latitude as defined by sender
 }
 
 
@@ -535,9 +535,9 @@ pub:
 pub struct MaskPosition {
 pub:
 	point string // The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”.
-	x_shift f32 // Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place mask just to the left of the default mask position.
-	y_shift f32 // Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. For example, 1.0 will place the mask just below the default mask position.
-	scale f32 // Mask scaling coefficient. For example, 2.0 means double size.
+	x_shift string // Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place mask just to the left of the default mask position.
+	y_shift string // Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. For example, 1.0 will place the mask just below the default mask position.
+	scale string // Mask scaling coefficient. For example, 2.0 means double size.
 }
 
 
@@ -715,8 +715,8 @@ pub struct InlineQueryResultLocation {
 pub:
 	@type string // Type of the result, must be location
 	id string // Unique identifier for this result, 1-64 Bytes
-	latitude f32 // Location latitude in degrees
-	longitude f32 // Location longitude in degrees
+	latitude string // Location latitude in degrees
+	longitude string // Location longitude in degrees
 	title string // Location title
 	live_period int // Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
 	reply_markup InlineKeyboardMarkup // Optional. Inline keyboard attached to the message
@@ -732,8 +732,8 @@ pub struct InlineQueryResultVenue {
 pub:
 	@type string // Type of the result, must be venue
 	id string // Unique identifier for this result, 1-64 Bytes
-	latitude f32 // Latitude of the venue location in degrees
-	longitude f32 // Longitude of the venue location in degrees
+	latitude string // Latitude of the venue location in degrees
+	longitude string // Longitude of the venue location in degrees
 	title string // Title of the venue
 	address string // Address of the venue
 	foursquare_id string // Optional. Foursquare identifier of the venue if known
@@ -905,8 +905,8 @@ pub:
 // Represents the content of a location message to be sent as the result of an inline query.
 pub struct InputLocationMessageContent {
 pub:
-	latitude f32 // Latitude of the location in degrees
-	longitude f32 // Longitude of the location in degrees
+	latitude string // Latitude of the location in degrees
+	longitude string // Longitude of the location in degrees
 	live_period int // Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
 }
 
@@ -914,8 +914,8 @@ pub:
 // Represents the content of a venue message to be sent as the result of an inline query.
 pub struct InputVenueMessageContent {
 pub:
-	latitude f32 // Latitude of the venue in degrees
-	longitude f32 // Longitude of the venue in degrees
+	latitude string // Latitude of the venue in degrees
+	longitude string // Longitude of the venue in degrees
 	title string // Name of the venue
 	address string // Address of the venue
 	foursquare_id string // Optional. Foursquare identifier of the venue, if known

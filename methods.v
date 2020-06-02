@@ -296,8 +296,8 @@ pub fn (d Bot) send_media_group(e NewSendMediaGroup) []Message {
 pub struct NewSendLocation {
 pub:
 	chat_id string //Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	latitude f32 //Latitude of the location
-	longitude f32 //Longitude of the location
+	latitude string //Latitude of the location
+	longitude string //Longitude of the location
 	live_period int //Period in seconds for which the location will be updated (see Live Locations, should be between 60 and 86400.
 	disable_notification bool //Sends the message silently. Users will receive a notification with no sound.
 	reply_to_message_id int //If the message is a reply, ID of the original message
@@ -317,8 +317,8 @@ pub:
 	chat_id string //Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
 	message_id int //Required if inline_message_id is not specified. Identifier of the message to edit
 	inline_message_id string //Required if chat_id and message_id are not specified. Identifier of the inline message
-	latitude f32 //Latitude of new location
-	longitude f32 //Longitude of new location
+	latitude string //Latitude of new location
+	longitude string //Longitude of new location
 	reply_markup string //A JSON-serialized object for a new inline keyboard.
 }
 // edit_message_live_location Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.
@@ -349,8 +349,8 @@ pub fn (d Bot) stop_message_live_location(e NewStopMessageLiveLocation) Message 
 pub struct NewSendVenue {
 pub:
 	chat_id string //Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-	latitude f32 //Latitude of the venue
-	longitude f32 //Longitude of the venue
+	latitude string //Latitude of the venue
+	longitude string //Longitude of the venue
 	title string //Name of the venue
 	address string //Address of the venue
 	foursquare_id string //Foursquare identifier of the venue
