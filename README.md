@@ -42,7 +42,7 @@ fn main(){
 }
 ```
 ## Examples  
-* [`hi_man.v`](examples/hi_man.php) - a dead simple Telegram bot in V
+* [`hi_man.v`](examples/hi_man.v) - a dead simple Telegram bot in V
 
 ## Documentation  
 You can find the documentation directly on the [Telegram website](https://core.telegram.org/bots/api) or you can read it in vgram source. See methods.v and types.v.
