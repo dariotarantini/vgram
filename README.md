@@ -5,7 +5,7 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 It currently implement every method from Telegram Bot API 4.4
 ## Installing  
 ```
-v install vpervenditti.vgram
+v install dariotarantini.vgram
 ```
 
 ## Getting started  
@@ -15,7 +15,7 @@ v install vpervenditti.vgram
 ```v
 module main
 
-import vpervenditti.vgram
+import dariotarantini.vgram
 
 
 fn main(){
