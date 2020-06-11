@@ -1,8 +1,8 @@
 # vgram   
-**vgram** is a bot library for Telegram Bot API written in V.   
+**vgram** is a bot library for the Telegram Bot API written in V.   
 The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram.
 
-It currently implement every method from Telegram Bot API 4.4
+It currently implements every method from Telegram Bot API 4.4
 ## Installing  
 ```
 v install dariotarantini.vgram
@@ -11,7 +11,7 @@ v install dariotarantini.vgram
 ## Getting started  
 1. Search for the “@botfather” telegram bot and start it  
 2. Click on or type /newbot to create a new bot and follow his instructions  
-3. Get the token Now, create a file named hi_man.v and put this code:  
+3. Copy the token and create a file named hi_man.v with the following code:  
 ```v
 module main
 
@@ -43,10 +43,10 @@ fn main(){
 }
 ```
 ## Examples  
-* [`hi_man.v`](examples/hi_man.v) - a dead simple Telegram bot in V
+* [`hi_man.v`](examples/hi_man.v) - a simple Telegram bot written in V
 
 ## Documentation  
-You can find the documentation directly on the [Telegram website](https://core.telegram.org/bots/api) or you can read it in vgram source. See methods.v and types.v.
+You can find the documentation directly on the [Telegram website](https://core.telegram.org/bots/api) or you can read it in the vgram source code. See methods.v and types.v.
 
 Call a method using:
 ```v
