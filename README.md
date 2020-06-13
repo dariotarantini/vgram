@@ -2,48 +2,34 @@
 **vgram** is a bot library for the Telegram Bot API written in V.   
 The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram.
 
-It currently implements every method from Telegram Bot API 4.4
+It currently implements every method from Telegram Bot API 4.8
 ## Installing  
-```
-v install dariotarantini.vgram
-```
+- Using vpm: `v install dariotarantini.vgram`  
+- Using vpkg: `vpkg get vgram`
+
+## TBA
+Currently, due to some vlang issues, this library have some limitations.  
+Some part of the code are commented, check types.v
 
 ## Getting started  
 1. Search for the “@botfather” telegram bot and start it  
 2. Click on or type /newbot to create a new bot and follow his instructions  
-3. Copy the token and create a file named hi_man.v with the following code:  
+3. Copy the token and create a file named sendMessage.v with the following code:  
 ```v
 module main
 
 import dariotarantini.vgram
 
-
 fn main(){
     bot := vgram.new_bot('TELEGRAM_BOT_TOKEN_HERE')
-    mut updates := []vgram.Update{}
-    mut last_offset := 0
-    for {
-        updates = bot.get_updates({offset: last_offset, limit: 100})
-        for update in updates {
-            if last_offset < update.update_id {
-                last_offset = update.update_id
-                if update.message.text == "/start" {
-                    bot.send_chat_action({
-                        chat_id: update.message.from.id.str(),
-                        action: "typing"
-                    })
-                    bot.send_message({
-                        chat_id: update.message.from.id.str(),
-                        text: 'Hi man'
-                    })
-                }
-            }
-        }
-    }
+    bot.send_message({
+        chat_id: "USER_ID_HERE",
+        text: 'yo! Made using vgram!'
+    })
 }
 ```
 ## Examples  
-* [`hi_man.v`](examples/hi_man.v) - a simple Telegram bot written in V
+* [`hi_man.v`](examples/hi_man.v) - a complete Telegram bot written in V
 
 ## Documentation  
 You can find the documentation directly on the [Telegram website](https://core.telegram.org/bots/api) or you can read it in the vgram source code. See methods.v and types.v.
@@ -55,7 +41,7 @@ bot_instance.method_name({
     method_arg1: 123 // or int
 })
 
-- method_name and method_arg* shoud be in snake_case
-- float value should be text (eg "1.23")
+- *bot_instance* can be created using bot_instance := vgram.Bot{"TOKEN"} or bot_instance.new_bot("TOKEN")
+- *method_name* and *method_args* shoud be in snake_case
 ```
 Thats it. You are ready to go.
