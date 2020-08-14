@@ -17,7 +17,7 @@ pub fn new_bot(utoken string) Bot {
 
 fn (d Bot) http_request(method, xdata string) string {
     xreq := http.Request{
-        method: "POST"
+        method: .post
         headers: {
             'Content-Type': 'application/json'
         }
