@@ -15,7 +15,7 @@ pub fn new_bot(utoken string) Bot {
     }
 }
 
-fn (d Bot) http_request(method, xdata string) string {
+fn (d Bot) http_request(method string, xdata string) string {
     xreq := http.Request{
         method: .post
         headers: {
