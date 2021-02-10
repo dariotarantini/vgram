@@ -45,3 +45,6 @@ bot_instance.method_name({
 - *method_name* and *method_args* shoud be in snake_case
 ```
 Thats it. You are ready to go.
+
+## Custom endpoint  
+You can set a custom telegram endpoint via `Bot.endpoint` value. Default is set to `https://api.telegram.org/bot`

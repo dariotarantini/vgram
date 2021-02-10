@@ -1,6 +1,6 @@
 module main
 
-import vpervenditti.vgram
+import dariotarantini.vgram
 
 
 fn main(){
