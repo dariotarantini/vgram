@@ -4,7 +4,9 @@ import dariotarantini.vgram
 
 
 fn main(){
-    bot := vgram.new_bot('TELEGRAM_BOT_TOKEN_HERE')
+    bot := vgram.new_bot(
+        token: "TOKEN_BOT_HERE"
+    )
     mut updates := []vgram.Update{}
     mut last_offset := 0
     for {

@@ -4,35 +4,55 @@ import net.http
 import time
 import json
 
-pub struct Bot {
+[params]
+pub struct ConfigBot {
 pub:
-    token string
+    token string [required]
     endpoint string = "https://api.telegram.org/bot"
 }
 
-pub fn new_bot(utoken string) Bot {
+struct Bot {
+    token string
+    endpoint string
+}
+
+pub fn new_bot(conf ConfigBot) Bot {
     return Bot{
-        token: utoken
+        token: conf.token
+        endpoint: conf.endpoint
     }
+}
+
+pub struct ResponserOK {
+pub:
+	ok bool                
+	result string [raw]          
+}
+
+pub struct ResponserNotOK {
+pub:
+	ok bool                
+	error_code int                 
+	description string              
 }
 
 fn (d Bot) http_request(method string, _data string) string {
     result := http.post_json("${d.endpoint}${d.token}/${method}", _data)  or {
-        println("Unable to do request")
+        println("[ERROR] Unable to do request")
         return ""
     }
     if result.status_code == 200 {
         xtgresp := json.decode(ResponserOK, result.text) or { 
-            println("Failed to decode json")
+            println("[ERROR] Failed to decode json.")
             return ""
         }
     	return xtgresp.result
     } else {
         xtgresp := json.decode(ResponserNotOK, result.text) or { 
-            println("Failed to decode json")
+            println("[ERROR] Failed to decode json.")
             return ""
         }
-        println("\n\nError!\nMethod: ${method}\nTime: " + time.now().str() + "\nError code: " + xtgresp.error_code.str() + "\nDescription: " + xtgresp.description)
+        println("[ERROR] Method: ${method}\nTime: " + time.now().str() + "\nCode: " + xtgresp.error_code.str() + "\nDescription: " + xtgresp.description)
         return ""
     }
 }
