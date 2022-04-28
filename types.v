@@ -553,7 +553,7 @@ pub:
 pub struct InlineKeyboardMarkup {
 pub:
 	// inline_keyboard Array of button rows, each represented by an Array of InlineKeyboardButton objects
-	inline_keyboard []InlineKeyboardButton
+	inline_keyboard [][]InlineKeyboardButton
 }
 // InlineKeyboardButton This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
 pub struct InlineKeyboardButton {
