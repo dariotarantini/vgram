@@ -22,13 +22,13 @@ fn (d Bot) http_request(method string, _data string) string {
         return ""
     }
     if result.status_code == 200 {
-        xtgresp := json.decode(ResponserOK, result.text) or { 
+        xtgresp := json.decode(ResponserOK, result.body) or { 
             println("Failed to decode json")
             return ""
         }
     	return xtgresp.result
     } else {
-        xtgresp := json.decode(ResponserNotOK, result.text) or { 
+        xtgresp := json.decode(ResponserNotOK, result.body) or { 
             println("Failed to decode json")
             return ""
         }
