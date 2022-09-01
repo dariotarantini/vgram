@@ -22,10 +22,10 @@ import dariotarantini.vgram
 
 fn main(){
     bot := vgram.new_bot('TELEGRAM_BOT_TOKEN_HERE')
-    bot.send_message({
+    bot.send_message(
         chat_id: "USER_ID_HERE",
         text: 'yo! Made using vgram!'
-    })
+    )
 }
 ```
 ## Examples  
@@ -36,10 +36,10 @@ You can find the documentation directly on the [Telegram website](https://core.t
 
 Call a method using:
 ```v
-bot_instance.method_name({
+bot_instance.method_name(
     method_arg1: "some text"
     method_arg1: 123 // or int
-})
+)
 
 - *bot_instance* can be created using bot_instance := vgram.Bot{"TOKEN"} or bot_instance.new_bot("TOKEN")
 - *method_name* and *method_args* shoud be in snake_case
