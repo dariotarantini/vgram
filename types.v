@@ -2,18 +2,16 @@ module vgram
 
 pub struct ResponserOK {
 pub:
-	ok bool                
-	result string [raw]          
+	ok     bool
+	result string @[raw]
 }
 
 pub struct ResponserNotOK {
 pub:
-	ok bool                
-	error_code int                 
-	description string              
+	ok          bool
+	error_code  int
+	description string
 }
-
-
 
 // Update This object represents an incoming update.At most one of the optional parameters can be present in any given update.
 pub struct Update {
@@ -43,6 +41,7 @@ pub:
 	// poll_answer Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
 	poll_answer PollAnswer
 }
+
 // WebhookInfo Contains information about the current status of a webhook.
 pub struct WebhookInfo {
 pub:
@@ -63,6 +62,7 @@ pub:
 	// allowed_updates Optional. A list of update types the bot is subscribed to. Defaults to all update types
 	allowed_updates []string
 }
+
 // User This object represents a Telegram user or bot.
 pub struct User {
 pub:
@@ -85,6 +85,7 @@ pub:
 	// supports_inline_queries Optional. True, if the bot supports inline queries. Returned only in getMe.
 	supports_inline_queries bool
 }
+
 // Chat This object represents a chat.
 pub struct Chat {
 pub:
@@ -123,6 +124,7 @@ pub:
 	// location Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
 	location ChatLocation
 }
+
 // Message This object represents a message.
 pub struct Message {
 pub:
@@ -149,7 +151,7 @@ pub:
 	// forward_date Optional. For forwarded messages, date the original message was sent in Unix time
 	forward_date int
 	// reply_to_message Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
-	//reply_to_message Message
+	// reply_to_message Message
 	// via_bot Optional. Bot through which the message was sent
 	via_bot User
 	// edit_date Optional. Date the message was last edited in Unix time
@@ -215,7 +217,7 @@ pub:
 	// migrate_from_chat_id Optional. The supergroup has been migrated from a group with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
 	migrate_from_chat_id int
 	// pinned_message Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
-	//pinned_message Message
+	// pinned_message Message
 	// invoice Optional. Message is an invoice for a payment, information about the invoice. More about payments »
 	invoice Invoice
 	// successful_payment Optional. Message is a service message about a successful payment, information about the payment. More about payments »
@@ -229,12 +231,14 @@ pub:
 	// reply_markup Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
 	reply_markup InlineKeyboardMarkup
 }
+
 // MessageId This object represents a unique message identifier.
 pub struct MessageId {
 pub:
 	// message_id Unique message identifier
 	message_id int
 }
+
 // MessageEntity This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
 pub struct MessageEntity {
 pub:
@@ -251,6 +255,7 @@ pub:
 	// language Optional. For “pre” only, the programming language of the entity text
 	language string
 }
+
 // PhotoSize This object represents one size of a photo or a file / sticker thumbnail.
 pub struct PhotoSize {
 pub:
@@ -265,6 +270,7 @@ pub:
 	// file_size Optional. File size
 	file_size int
 }
+
 // Animation This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
 pub struct Animation {
 pub:
@@ -287,6 +293,7 @@ pub:
 	// file_size Optional. File size
 	file_size int
 }
+
 // Audio This object represents an audio file to be treated as music by the Telegram clients.
 pub struct Audio {
 pub:
@@ -309,6 +316,7 @@ pub:
 	// thumb Optional. Thumbnail of the album cover to which the music file belongs
 	thumb PhotoSize
 }
+
 // Document This object represents a general file (as opposed to photos, voice messages and audio files).
 pub struct Document {
 pub:
@@ -325,6 +333,7 @@ pub:
 	// file_size Optional. File size
 	file_size int
 }
+
 // Video This object represents a video file.
 pub struct Video {
 pub:
@@ -347,6 +356,7 @@ pub:
 	// file_size Optional. File size
 	file_size int
 }
+
 // VideoNote This object represents a video message (available in Telegram apps as of v.4.0).
 pub struct VideoNote {
 pub:
@@ -363,6 +373,7 @@ pub:
 	// file_size Optional. File size
 	file_size int
 }
+
 // Voice This object represents a voice note.
 pub struct Voice {
 pub:
@@ -377,6 +388,7 @@ pub:
 	// file_size Optional. File size
 	file_size int
 }
+
 // Contact This object represents a phone contact.
 pub struct Contact {
 pub:
@@ -391,6 +403,7 @@ pub:
 	// vcard Optional. Additional data about the contact in the form of a vCard
 	vcard string
 }
+
 // Dice This object represents an animated emoji that displays a random value.
 pub struct Dice {
 pub:
@@ -399,6 +412,7 @@ pub:
 	// value Value of the dice, 1-6 for “” and “” base emoji, 1-5 for “” and “” base emoji, 1-64 for “” base emoji
 	value int
 }
+
 // PollOption This object contains information about one answer option in a poll.
 pub struct PollOption {
 pub:
@@ -407,6 +421,7 @@ pub:
 	// voter_count Number of users that voted for this option
 	voter_count int
 }
+
 // PollAnswer This object represents an answer of a user in a non-anonymous poll.
 pub struct PollAnswer {
 pub:
@@ -417,6 +432,7 @@ pub:
 	// option_ids 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
 	option_ids []int
 }
+
 // Poll This object contains information about a poll.
 pub struct Poll {
 pub:
@@ -447,6 +463,7 @@ pub:
 	// close_date Optional. Point in time (Unix timestamp) when the poll will be automatically closed
 	close_date int
 }
+
 // Location This object represents a point on the map.
 pub struct Location {
 pub:
@@ -463,6 +480,7 @@ pub:
 	// proximity_alert_radius Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
 	proximity_alert_radius int
 }
+
 // Venue This object represents a venue.
 pub struct Venue {
 pub:
@@ -481,6 +499,7 @@ pub:
 	// google_place_type Optional. Google Places type of the venue. (See supported types.)
 	google_place_type string
 }
+
 // ProximityAlertTriggered This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
 pub struct ProximityAlertTriggered {
 pub:
@@ -491,6 +510,7 @@ pub:
 	// distance The distance between the users
 	distance int
 }
+
 // UserProfilePhotos This object represent a user's profile pictures.
 pub struct UserProfilePhotos {
 pub:
@@ -499,6 +519,7 @@ pub:
 	// photos Requested profile pictures (in up to 4 sizes each)
 	photos []PhotoSize
 }
+
 // File This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
 pub struct File {
 pub:
@@ -511,6 +532,7 @@ pub:
 	// file_path Optional. File path. Use https://api.telegram.org/file/bot/ to get the file.
 	file_path string
 }
+
 // ReplyKeyboardMarkup This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
 pub struct ReplyKeyboardMarkup {
 pub:
@@ -523,6 +545,7 @@ pub:
 	// selective Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.Example: A user requests to change the bot's language, bot replies to the request with a keyboard to select the new language. Other users in the group don't see the keyboard.
 	selective bool
 }
+
 // KeyboardButton This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.
 pub struct KeyboardButton {
 pub:
@@ -535,12 +558,14 @@ pub:
 	// request_poll Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only
 	request_poll KeyboardButtonPollType
 }
+
 // KeyboardButtonPollType This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
 pub struct KeyboardButtonPollType {
 pub:
 	// type Optional. If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type.
 	@type string
 }
+
 // ReplyKeyboardRemove Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).
 pub struct ReplyKeyboardRemove {
 pub:
@@ -549,12 +574,14 @@ pub:
 	// selective Optional. Use this parameter if you want to remove the keyboard for specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.Example: A user votes in a poll, bot returns confirmation message in reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet.
 	selective bool
 }
+
 // InlineKeyboardMarkup This object represents an inline keyboard that appears right next to the message it belongs to.
 pub struct InlineKeyboardMarkup {
 pub:
 	// inline_keyboard Array of button rows, each represented by an Array of InlineKeyboardButton objects
 	inline_keyboard [][]InlineKeyboardButton
 }
+
 // InlineKeyboardButton This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
 pub struct InlineKeyboardButton {
 pub:
@@ -575,6 +602,7 @@ pub:
 	// pay Optional. Specify True, to send a Pay button.NOTE: This type of button must always be the first button in the first row.
 	pay bool
 }
+
 // LoginUrl This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:
 pub struct LoginUrl {
 pub:
@@ -587,6 +615,7 @@ pub:
 	// request_write_access Optional. Pass True to request the permission for your bot to send messages to the user.
 	request_write_access bool
 }
+
 // CallbackQuery This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name will be present.
 pub struct CallbackQuery {
 pub:
@@ -605,6 +634,7 @@ pub:
 	// game_short_name Optional. Short name of a Game to be returned, serves as the unique identifier for the game
 	game_short_name string
 }
+
 // ForceReply Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode.
 pub struct ForceReply {
 pub:
@@ -613,6 +643,7 @@ pub:
 	// selective Optional. Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
 	selective bool
 }
+
 // ChatPhoto This object represents a chat photo.
 pub struct ChatPhoto {
 pub:
@@ -625,6 +656,7 @@ pub:
 	// big_file_unique_id Unique file identifier of big (640x640) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
 	big_file_unique_id string
 }
+
 // ChatMember This object contains information about one member of a chat.
 pub struct ChatMember {
 pub:
@@ -669,6 +701,7 @@ pub:
 	// until_date Optional. Restricted and kicked only. Date when restrictions will be lifted for this user; unix time
 	until_date int
 }
+
 // ChatPermissions Describes actions that a non-administrator user is allowed to take in a chat.
 pub struct ChatPermissions {
 pub:
@@ -689,6 +722,7 @@ pub:
 	// can_pin_messages Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
 	can_pin_messages bool
 }
+
 // ChatLocation Represents a location to which a chat is connected.
 pub struct ChatLocation {
 pub:
@@ -697,6 +731,7 @@ pub:
 	// address Location address; 1-64 characters, as defined by the chat owner
 	address string
 }
+
 // BotCommand This object represents a bot command.
 pub struct BotCommand {
 pub:
@@ -705,6 +740,7 @@ pub:
 	// description Description of the command, 3-256 characters.
 	description string
 }
+
 // ResponseParameters Contains information about why a request was unsuccessful.
 pub struct ResponseParameters {
 pub:
@@ -713,8 +749,14 @@ pub:
 	// retry_after Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated
 	retry_after int
 }
+
 // InputMedia This object represents the content of a media message to be sent. It should be one of
-pub type InputMedia = InputMediaPhoto | InputMediaVideo | InputMediaAnimation | InputMediaAudio | InputMediaDocument
+pub type InputMedia = InputMediaPhoto
+	| InputMediaVideo
+	| InputMediaAnimation
+	| InputMediaAudio
+	| InputMediaDocument
+
 // InputMediaPhoto Represents a photo to be sent.
 pub struct InputMediaPhoto {
 pub:
@@ -729,6 +771,7 @@ pub:
 	// caption_entities Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
 	caption_entities []MessageEntity
 }
+
 // InputMediaVideo Represents a video to be sent.
 pub struct InputMediaVideo {
 pub:
@@ -753,6 +796,7 @@ pub:
 	// supports_streaming Optional. Pass True, if the uploaded video is suitable for streaming
 	supports_streaming bool
 }
+
 // InputMediaAnimation Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
 pub struct InputMediaAnimation {
 pub:
@@ -775,6 +819,7 @@ pub:
 	// duration Optional. Animation duration
 	duration int
 }
+
 // InputMediaAudio Represents an audio file to be treated as music to be sent.
 pub struct InputMediaAudio {
 pub:
@@ -797,6 +842,7 @@ pub:
 	// title Optional. Title of the audio
 	title string
 }
+
 // InputMediaDocument Represents a general file to be sent.
 pub struct InputMediaDocument {
 pub:
@@ -815,6 +861,7 @@ pub:
 	// disable_content_type_detection Optional. Disables automatic server-side content type detection for files uploaded using multipart/form-data. Always true, if the document is sent as part of an album.
 	disable_content_type_detection bool
 }
+
 // InputFile This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
 /*pub struct InputFile {
 pub:
@@ -843,6 +890,7 @@ pub:
 	// file_size Optional. File size
 	file_size int
 }
+
 // StickerSet This object represents a sticker set.
 pub struct StickerSet {
 pub:
@@ -859,6 +907,7 @@ pub:
 	// thumb Optional. Sticker set thumbnail in the .WEBP or .TGS format
 	thumb PhotoSize
 }
+
 // MaskPosition This object describes the position on faces where a mask should be placed by default.
 pub struct MaskPosition {
 pub:
@@ -871,6 +920,7 @@ pub:
 	// scale Mask scaling coefficient. For example, 2.0 means double size.
 	scale f32
 }
+
 // InlineQuery This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
 pub struct InlineQuery {
 pub:
@@ -885,8 +935,14 @@ pub:
 	// offset Offset of the results to be returned, can be controlled by the bot
 	offset string
 }
+
 // InlineQueryResult This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:
-pub type InlineQueryResult = InlineQueryResultArticle | InlineQueryResultPhoto | InlineQueryResultGif | InlineQueryResultMpeg4Gif | InlineQueryResultVideo
+pub type InlineQueryResult = InlineQueryResultArticle
+	| InlineQueryResultPhoto
+	| InlineQueryResultGif
+	| InlineQueryResultMpeg4Gif
+	| InlineQueryResultVideo
+
 // InlineQueryResultArticle Represents a link to an article or web page.
 pub struct InlineQueryResultArticle {
 pub:
@@ -913,6 +969,7 @@ pub:
 	// thumb_height Optional. Thumbnail height
 	thumb_height int
 }
+
 // InlineQueryResultPhoto Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
 pub struct InlineQueryResultPhoto {
 pub:
@@ -943,6 +1000,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the photo
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultGif Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
 pub struct InlineQueryResultGif {
 pub:
@@ -975,6 +1033,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the GIF animation
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultMpeg4Gif Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
 pub struct InlineQueryResultMpeg4Gif {
 pub:
@@ -1007,6 +1066,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the video animation
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultVideo Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
 pub struct InlineQueryResultVideo {
 pub:
@@ -1041,6 +1101,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultAudio Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
 pub struct InlineQueryResultAudio {
 pub:
@@ -1067,6 +1128,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the audio
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultVoice Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
 pub struct InlineQueryResultVoice {
 pub:
@@ -1091,6 +1153,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the voice recording
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultDocument Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
 pub struct InlineQueryResultDocument {
 pub:
@@ -1123,6 +1186,7 @@ pub:
 	// thumb_height Optional. Thumbnail height
 	thumb_height int
 }
+
 // InlineQueryResultLocation Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
 pub struct InlineQueryResultLocation {
 pub:
@@ -1155,6 +1219,7 @@ pub:
 	// thumb_height Optional. Thumbnail height
 	thumb_height int
 }
+
 // InlineQueryResultVenue Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
 pub struct InlineQueryResultVenue {
 pub:
@@ -1189,6 +1254,7 @@ pub:
 	// thumb_height Optional. Thumbnail height
 	thumb_height int
 }
+
 // InlineQueryResultContact Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
 pub struct InlineQueryResultContact {
 pub:
@@ -1215,6 +1281,7 @@ pub:
 	// thumb_height Optional. Thumbnail height
 	thumb_height int
 }
+
 // InlineQueryResultGame Represents a Game.
 pub struct InlineQueryResultGame {
 pub:
@@ -1227,6 +1294,7 @@ pub:
 	// reply_markup Optional. Inline keyboard attached to the message
 	reply_markup InlineKeyboardMarkup
 }
+
 // InlineQueryResultCachedPhoto Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
 pub struct InlineQueryResultCachedPhoto {
 pub:
@@ -1251,6 +1319,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the photo
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultCachedGif Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
 pub struct InlineQueryResultCachedGif {
 pub:
@@ -1273,6 +1342,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the GIF animation
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultCachedMpeg4Gif Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
 pub struct InlineQueryResultCachedMpeg4Gif {
 pub:
@@ -1295,6 +1365,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the video animation
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultCachedSticker Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.
 pub struct InlineQueryResultCachedSticker {
 pub:
@@ -1309,6 +1380,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the sticker
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultCachedDocument Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
 pub struct InlineQueryResultCachedDocument {
 pub:
@@ -1333,6 +1405,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the file
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultCachedVideo Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
 pub struct InlineQueryResultCachedVideo {
 pub:
@@ -1357,6 +1430,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the video
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultCachedVoice Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
 pub struct InlineQueryResultCachedVoice {
 pub:
@@ -1379,6 +1453,7 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the voice message
 	input_message_content InputMessageContent
 }
+
 // InlineQueryResultCachedAudio Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
 pub struct InlineQueryResultCachedAudio {
 pub:
@@ -1399,8 +1474,12 @@ pub:
 	// input_message_content Optional. Content of the message to be sent instead of the audio
 	input_message_content InputMessageContent
 }
+
 // InputMessageContent This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types:
-pub type InputMessageContent = InputTextMessageContent | InputLocationMessageContent | InputVenueMessageContent | InputContactMessageContent
+pub type InputMessageContent = InputTextMessageContent
+	| InputLocationMessageContent
+	| InputVenueMessageContent
+	| InputContactMessageContent
 
 // InputTextMessageContent Represents the content of a text message to be sent as the result of an inline query.
 pub struct InputTextMessageContent {
@@ -1414,6 +1493,7 @@ pub:
 	// disable_web_page_preview Optional. Disables link previews for links in the sent message
 	disable_web_page_preview bool
 }
+
 // InputLocationMessageContent Represents the content of a location message to be sent as the result of an inline query.
 pub struct InputLocationMessageContent {
 pub:
@@ -1430,6 +1510,7 @@ pub:
 	// proximity_alert_radius Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
 	proximity_alert_radius int
 }
+
 // InputVenueMessageContent Represents the content of a venue message to be sent as the result of an inline query.
 pub struct InputVenueMessageContent {
 pub:
@@ -1450,6 +1531,7 @@ pub:
 	// google_place_type Optional. Google Places type of the venue. (See supported types.)
 	google_place_type string
 }
+
 // InputContactMessageContent Represents the content of a contact message to be sent as the result of an inline query.
 pub struct InputContactMessageContent {
 pub:
@@ -1462,6 +1544,7 @@ pub:
 	// vcard Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
 	vcard string
 }
+
 // ChosenInlineResult Represents a result of an inline query that was chosen by the user and sent to their chat partner.
 pub struct ChosenInlineResult {
 pub:
@@ -1476,6 +1559,7 @@ pub:
 	// query The query that was used to obtain the result
 	query string
 }
+
 // LabeledPrice This object represents a portion of the price for goods or services.
 pub struct LabeledPrice {
 pub:
@@ -1484,6 +1568,7 @@ pub:
 	// amount Price of the product in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
 	amount int
 }
+
 // Invoice This object contains basic information about an invoice.
 pub struct Invoice {
 pub:
@@ -1498,6 +1583,7 @@ pub:
 	// total_amount Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
 	total_amount int
 }
+
 // ShippingAddress This object represents a shipping address.
 pub struct ShippingAddress {
 pub:
@@ -1514,6 +1600,7 @@ pub:
 	// post_code Address post code
 	post_code string
 }
+
 // OrderInfo This object represents information about an order.
 pub struct OrderInfo {
 pub:
@@ -1526,6 +1613,7 @@ pub:
 	// shipping_address Optional. User shipping address
 	shipping_address ShippingAddress
 }
+
 // ShippingOption This object represents one shipping option.
 pub struct ShippingOption {
 pub:
@@ -1536,6 +1624,7 @@ pub:
 	// prices List of price portions
 	prices []LabeledPrice
 }
+
 // SuccessfulPayment This object contains basic information about a successful payment.
 pub struct SuccessfulPayment {
 pub:
@@ -1554,6 +1643,7 @@ pub:
 	// provider_payment_charge_id Provider payment identifier
 	provider_payment_charge_id string
 }
+
 // ShippingQuery This object contains information about an incoming shipping query.
 pub struct ShippingQuery {
 pub:
@@ -1566,6 +1656,7 @@ pub:
 	// shipping_address User specified shipping address
 	shipping_address ShippingAddress
 }
+
 // PreCheckoutQuery This object contains information about an incoming pre-checkout query.
 pub struct PreCheckoutQuery {
 pub:
@@ -1584,6 +1675,7 @@ pub:
 	// order_info Optional. Order info provided by the user
 	order_info OrderInfo
 }
+
 // PassportData Contains information about Telegram Passport data shared with the bot by the user.
 pub struct PassportData {
 pub:
@@ -1592,6 +1684,7 @@ pub:
 	// credentials Encrypted credentials required to decrypt the data
 	credentials EncryptedCredentials
 }
+
 // PassportFile This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.
 pub struct PassportFile {
 pub:
@@ -1604,6 +1697,7 @@ pub:
 	// file_date Unix time when the file was uploaded
 	file_date int
 }
+
 // EncryptedPassportElement Contains information about documents or other Telegram Passport elements shared with the bot by the user.
 pub struct EncryptedPassportElement {
 pub:
@@ -1628,6 +1722,7 @@ pub:
 	// hash Base64-encoded element hash for using in PassportElementErrorUnspecified
 	hash string
 }
+
 // EncryptedCredentials Contains data required for decrypting and authenticating EncryptedPassportElement. See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
 pub struct EncryptedCredentials {
 pub:
@@ -1638,6 +1733,7 @@ pub:
 	// secret Base64-encoded secret, encrypted with the bot's public RSA key, required for data decryption
 	secret string
 }
+
 // PassportElementError This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:
 /*pub struct PassportElementError {
 pub:
@@ -1656,6 +1752,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorFrontSide Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
 pub struct PassportElementErrorFrontSide {
 pub:
@@ -1668,6 +1765,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorReverseSide Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes.
 pub struct PassportElementErrorReverseSide {
 pub:
@@ -1680,6 +1778,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorSelfie Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
 pub struct PassportElementErrorSelfie {
 pub:
@@ -1692,6 +1791,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorFile Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
 pub struct PassportElementErrorFile {
 pub:
@@ -1704,6 +1804,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorFiles Represents an issue with a list of scans. The error is considered resolved when the list of files containing the scans changes.
 pub struct PassportElementErrorFiles {
 pub:
@@ -1716,6 +1817,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorTranslationFile Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved when the file changes.
 pub struct PassportElementErrorTranslationFile {
 pub:
@@ -1728,6 +1830,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorTranslationFiles Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
 pub struct PassportElementErrorTranslationFiles {
 pub:
@@ -1740,6 +1843,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // PassportElementErrorUnspecified Represents an issue in an unspecified place. The error is considered resolved when new data is added.
 pub struct PassportElementErrorUnspecified {
 pub:
@@ -1752,6 +1856,7 @@ pub:
 	// message Error message
 	message string
 }
+
 // Game This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
 pub struct Game {
 pub:
@@ -1768,8 +1873,10 @@ pub:
 	// animation Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
 	animation Animation
 }
+
 // CallbackGame A placeholder, currently holds no information. Use BotFather to set up your game.
 pub struct CallbackGame {}
+
 // GameHighScore This object represents one row of the high scores table for a game.
 pub struct GameHighScore {
 pub:
