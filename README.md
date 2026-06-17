@@ -34,6 +34,7 @@ fn main() {
 ## Examples
 
 * [`hi_man.v`](examples/hi_man.v) - a complete Telegram bot written in V
+* [`send_photo.v`](examples/send_photo.v) - uploading a local file via multipart/form-data
 
 ## Documentation
 
@@ -104,6 +105,27 @@ field):
 ```v
 raw := bot.http_request('someNewMethod', json.encode(params))!
 ```
+
+## Uploading files
+
+File parameters (`photo`, `document`, ...) accept a `file_id` or an HTTP URL as
+a plain string. To upload a *local* file, use `http_request_files`, which sends
+`multipart/form-data`:
+
+```v
+import json
+
+photo := vgram.input_file_from_path('cat.jpg')!
+raw := bot.http_request_files('sendPhoto',
+	{'chat_id': '123456', 'caption': 'look at this'},
+	{'photo': [photo]})!
+msg := json.decode(vgram.Message, raw)!
+```
+
+`form` holds the textual parameters (including the `json.encode(...)` of any
+complex ones, e.g. `reply_markup`); `files` maps each file field to its
+contents. `input_file_from_path` reads a file from disk; you can also build an
+`http.FileData{filename, content_type, data}` yourself.
 
 ## Regenerating the bindings
 
