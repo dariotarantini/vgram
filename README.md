@@ -10,7 +10,7 @@ Telegram updates the API.
 
 ## Installing
 
-- Using vpm: `v install dariotarantini.vgram`
+`$ v install dariotarantini.vgram`
 
 ## Getting started
 
