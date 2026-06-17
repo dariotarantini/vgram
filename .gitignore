@@ -1,0 +1,52 @@
+# V build artifacts
+*.so
+*.dll
+*.dylib
+
+# Compiled generator / example binaries
+/gen/gen
+/vgram
+
+# V temp/cache
+*.tmp.c
+*.tmp.js
+
+# AI / LLM assistant folders & files
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.continue/
+.codeium/
+.windsurf/
+.cline/
+.gemini/
+.opencode/
+.serena/
+.specstory/
+.github/copilot-instructions.md
+
+# GitHub Pages / Jekyll site config
+_config.yml
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.AppleDouble
+Thumbs.db
+Desktop.ini
+
+# Environment & secrets
+.env
+.env.*
+*.local
+
+# Logs & temp
+*.log
+*.tmp
