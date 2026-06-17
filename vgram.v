@@ -4,6 +4,7 @@
 module vgram
 
 import net.http
+import os
 import time
 import json
 
@@ -63,26 +64,14 @@ pub fn new_bot(token string) Bot {
 	}
 }
 
-// http_request performs a POST request against the Telegram Bot API and returns
-// the raw JSON of the response `result` field. It returns a TelegramError when
-// the API replies with `ok: false`, or the underlying transport error when the
-// request itself fails. It is public so callers can invoke API methods that are
-// not (yet) wrapped by a generated helper.
-pub fn (b Bot) http_request(method string, data string) !string {
-	mut header := http.new_header(key: .content_type, value: 'application/json')
-	header.add_custom_map(b.headers)!
-	mut req := http.Request{
-		method:        .post
-		url:           '${b.endpoint}${b.token}/${method}'
-		data:          data
-		header:        header
-		read_timeout:  b.timeout
-		write_timeout: b.timeout
-	}
-	if b.debug {
-		eprintln('vgram request ${method}: ${data}')
-	}
-	resp := req.do()!
+fn (b Bot) method_url(method string) string {
+	return '${b.endpoint}${b.token}/${method}'
+}
+
+// parse_response unwraps the Bot API envelope: it returns the raw JSON of the
+// `result` field, a TelegramError when the API replies with `ok: false`, or a
+// decode error for malformed JSON.
+fn (b Bot) parse_response(resp http.Response, method string) !string {
 	if b.debug {
 		eprintln('vgram response ${resp.status_code}: ${resp.body}')
 	}
@@ -98,4 +87,75 @@ pub fn (b Bot) http_request(method string, data string) !string {
 		}
 	}
 	return api.result
+}
+
+// http_request performs a JSON POST against the Telegram Bot API and returns the
+// raw JSON of the response `result` field. It returns a TelegramError when the
+// API replies with `ok: false`, or the underlying transport error when the
+// request itself fails. It is public so callers can invoke API methods that are
+// not (yet) wrapped by a generated helper.
+pub fn (b Bot) http_request(method string, data string) !string {
+	mut header := http.new_header(key: .content_type, value: 'application/json')
+	header.add_custom_map(b.headers)!
+	req := http.Request{
+		method:        .post
+		url:           b.method_url(method)
+		data:          data
+		header:        header
+		read_timeout:  b.timeout
+		write_timeout: b.timeout
+	}
+	if b.debug {
+		eprintln('vgram request ${method}: ${data}')
+	}
+	resp := req.do()!
+	return b.parse_response(resp, method)
+}
+
+// http_request_files performs a multipart/form-data POST, used to upload new
+// files (photo, document, ...). `form` holds the textual parameters (chat_id,
+// caption, the JSON of reply_markup, ...) and `files` maps each file field to
+// its contents. Returns the raw JSON of the `result` field, like http_request.
+//
+//   photo := vgram.input_file_from_path('cat.jpg')!
+//   raw := bot.http_request_files('sendPhoto', {'chat_id': id, 'caption': 'hi'},
+//       {'photo': [photo]})!
+//   msg := json.decode(vgram.Message, raw)!
+pub fn (b Bot) http_request_files(method string, form map[string]string, files map[string][]http.FileData) !string {
+	mut header := http.new_header()
+	header.add_custom_map(b.headers)!
+	if b.debug {
+		eprintln('vgram request ${method}: multipart, ${form.len} field(s), ${files.len} file field(s)')
+	}
+	resp := http.post_multipart_form(b.method_url(method), http.PostMultipartFormConfig{
+		form:   form
+		files:  files
+		header: header
+	})!
+	return b.parse_response(resp, method)
+}
+
+// input_file_from_path reads a local file into an http.FileData ready to be
+// passed to http_request_files.
+pub fn input_file_from_path(path string) !http.FileData {
+	return http.FileData{
+		filename:     os.file_name(path)
+		content_type: content_type_for(path)
+		data:         os.read_bytes(path)!.bytestr()
+	}
+}
+
+fn content_type_for(path string) string {
+	return match os.file_ext(path).to_lower() {
+		'.jpg', '.jpeg' { 'image/jpeg' }
+		'.png' { 'image/png' }
+		'.gif' { 'image/gif' }
+		'.webp' { 'image/webp' }
+		'.mp4' { 'video/mp4' }
+		'.mov' { 'video/quicktime' }
+		'.mp3' { 'audio/mpeg' }
+		'.ogg' { 'audio/ogg' }
+		'.pdf' { 'application/pdf' }
+		else { 'application/octet-stream' }
+	}
 }
